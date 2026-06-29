@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{ background:#F7F6F2; }
+  ::selection{ background:#0A0A0A; color:#F7F6F2; }
+  a{ color:inherit; }
+  @keyframes dc-fade{ from{opacity:0} to{opacity:1} }
+  input[type=range]{ -webkit-appearance:none; appearance:none; background:transparent; }
+  input[type=range]::-webkit-slider-runnable-track{ height:2px; background:#0A0A0A; }
+  input[type=range]::-moz-range-track{ height:2px; background:#0A0A0A; }
+  input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:18px; height:18px; margin-top:-8px; background:#0A0A0A; border:0; cursor:pointer; }
+  input[type=range]::-moz-range-thumb{ width:18px; height:18px; border:0; border-radius:0; background:#0A0A0A; cursor:pointer; }
+  input[type=range]:focus-visible::-webkit-slider-thumb{ outline:2px solid #1A7A4C; outline-offset:2px; }
+  a:focus-visible, button:focus-visible, input:focus-visible{ outline:2px solid #1A7A4C; outline-offset:3px; }
+</style>
+</helmet>
+<div style="background:#F7F6F2; color:#0A0A0A; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; line-height:1.5; padding-bottom:34px;">
+
+  <!-- ===== NAV ===== -->
+  <header style="position:sticky; top:0; z-index:50; background:rgba(247,246,242,0.92); backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid #E3E2DC;">
+    <div style="max-width:1180px; margin:0 auto; padding:16px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+      <a href="#top" style="display:flex; align-items:baseline; gap:9px; text-decoration:none; font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:500; letter-spacing:-0.01em;">
+        <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.18em; font-weight:500;">✓✓</span>
+        <span>DoubleCheque</span>
+      </a>
+      <nav style="display:flex; align-items:center; gap:28px; flex-wrap:wrap; font-size:14.5px;">
+        <a href="#how" style="text-decoration:none; color:#6B6B66;">How it works</a>
+        <a href="#why" style="text-decoration:none; color:#6B6B66;">Reliefs</a>
+        <a href="#calculator" style="text-decoration:none; color:#6B6B66;">Calculator</a>
+        <a href="#strategy" style="text-decoration:none; color:#6B6B66;">Strategy</a>
+        <a href="#fund" style="text-decoration:none; color:#6B6B66;">The fund</a>
+        <a href="#portfolio" style="text-decoration:none; color:#6B6B66;">Portfolio</a>
+        <a href="#founders" style="text-decoration:none; color:#6B6B66;">Founders</a>
+        <a href="#" onClick="{{ openFounder }}" style="text-decoration:none; background:transparent; color:#0A0A0A; padding:8px 15px; font-weight:500; font-size:14px; border:1px solid #0A0A0A;">For founders</a>
+        <a href="#" onClick="{{ openInvestor }}" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:9px 18px; font-weight:500; font-size:14px;">Invest</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="top" style="max-width:1180px; margin:0 auto; padding:84px 32px 64px;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; letter-spacing:0.02em; margin-bottom:30px;">SEIS / EIS investment fund, United Kingdom</div>
+    <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(38px,6vw,74px); line-height:1.34; letter-spacing:-0.025em; margin:0; max-width:20ch;">We back early-stage British startups through <span style="background:linear-gradient(90deg,#F2B705 0%,#EFA00E 100%); color:#0A0A0A; padding:0.05em 0.16em; box-decoration-break:clone; -webkit-box-decoration-break:clone;">SEIS and EIS</span>, and double-check every deal.</h1>
+    <p style="font-size:clamp(17px,2vw,20px); line-height:1.6; color:#0A0A0A; max-width:62ch; margin:30px 0 0;">Through the government's SEIS and EIS schemes, investors get back up to <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">50%</span> of what they put in as income tax relief, before any growth. Here is exactly how the schemes work, and how little you actually risk.</p>
+    <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:40px;">
+      <a href="#" onClick="{{ openInvestor }}" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:14px 26px; font-weight:500; font-size:15px;">Invest</a>
+      <a href="#" onClick="{{ openFounder }}" style="text-decoration:none; background:transparent; color:#0A0A0A; padding:13px 25px; font-weight:500; font-size:15px; border:1px solid #0A0A0A;">Apply for funding</a>
+      <a href="#how" style="text-decoration:none; color:#0A0A0A; font-weight:500; font-size:15px; padding:13px 6px; border-bottom:1px solid #0A0A0A;">How it works</a>
+    </div>
+    <!-- verification seal -->
+    <div style="margin-top:56px; display:inline-flex; align-items:center; gap:14px; border:1px solid #E3E2DC; background:#FFFFFF; padding:14px 18px;">
+      <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; font-size:22px; letter-spacing:-0.2em; font-weight:500;">✓✓</span>
+      <span style="font-size:14px; color:#6B6B66; max-width:42ch;">Every company is double-checked: financials, legals and HMRC advance assurance, all confirmed before it reaches the fund.</span>
+    </div>
+  </section>
+
+  <!-- ===== 01 HOW IT WORKS ===== -->
+  <section id="how" style="border-top:1px solid #E3E2DC;">
+    <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
+    <div style="max-width:1180px; margin:0 auto; padding:64px 32px 24px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">01 / How it works</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0; max-width:20ch;">Two schemes, one principle: the state shares your risk.</h2>
+    </div>
+
+    <!-- a) SEIS vs EIS comparison table -->
+    <div style="max-width:1180px; margin:0 auto; padding:36px 32px 8px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:18px;">a / Side by side</div>
+      <div style="overflow-x:auto; border:1px solid #0A0A0A; background:#FFFFFF;">
+        <table style="width:100%; min-width:560px; border-collapse:collapse; font-size:15px;">
+          <thead>
+            <tr style="border-bottom:1px solid #0A0A0A;">
+              <th style="text-align:left; padding:16px 20px; font-weight:500; font-family:'Space Grotesk',sans-serif; font-size:14px; color:#6B6B66; width:42%;">&nbsp;</th>
+              <th style="text-align:left; padding:16px 20px; font-weight:500; font-family:'Space Grotesk',sans-serif; font-size:17px;">SEIS<div style="font-size:12.5px; color:#6B6B66; font-family:'Inter',sans-serif; font-weight:400; margin-top:2px;">Seed stage</div></th>
+              <th style="text-align:left; padding:16px 20px; font-weight:500; font-family:'Space Grotesk',sans-serif; font-size:17px;">EIS<div style="font-size:12.5px; color:#6B6B66; font-family:'Inter',sans-serif; font-weight:400; margin-top:2px;">Growth stage</div></th>
+            </tr>
+          </thead>
+          <tbody style="font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums;">
+            <tr style="border-bottom:1px solid #E3E2DC;">
+              <td style="padding:15px 20px; font-family:'Inter',sans-serif; color:#6B6B66;">Income tax relief</td>
+              <td style="padding:15px 20px; font-weight:500;">50%</td>
+              <td style="padding:15px 20px; font-weight:500;">30%</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E3E2DC;">
+              <td style="padding:15px 20px; font-family:'Inter',sans-serif; color:#6B6B66;">Invest up to, per year</td>
+              <td style="padding:15px 20px;">£200,000</td>
+              <td style="padding:15px 20px;">£1,000,000</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E3E2DC;">
+              <td style="padding:15px 20px; font-family:'Inter',sans-serif; color:#6B6B66;">Company age</td>
+              <td style="padding:15px 20px;">under 3 years</td>
+              <td style="padding:15px 20px;">under 7 years</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E3E2DC;">
+              <td style="padding:15px 20px; font-family:'Inter',sans-serif; color:#6B6B66;">Gross assets</td>
+              <td style="padding:15px 20px;">under £350k</td>
+              <td style="padding:15px 20px;">under £30m</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E3E2DC;">
+              <td style="padding:15px 20px; font-family:'Inter',sans-serif; color:#6B6B66;">Company can raise</td>
+              <td style="padding:15px 20px;">£250k lifetime</td>
+              <td style="padding:15px 20px;">£10m a year</td>
+            </tr>
+            <tr style="border-bottom:1px solid #E3E2DC;">
+              <td style="padding:15px 20px; font-family:'Inter',sans-serif; color:#6B6B66;">Tax-free growth after 3 years</td>
+              <td style="padding:15px 20px; color:#1A7A4C; letter-spacing:-0.16em; font-size:18px; font-weight:500;">✓✓</td>
+              <td style="padding:15px 20px; color:#1A7A4C; letter-spacing:-0.16em; font-size:18px; font-weight:500;">✓✓</td>
+            </tr>
+            <tr>
+              <td style="padding:15px 20px; font-family:'Inter',sans-serif; color:#6B6B66;">Loss relief if it fails</td>
+              <td style="padding:15px 20px; color:#1A7A4C; letter-spacing:-0.16em; font-size:18px; font-weight:500;">✓✓</td>
+              <td style="padding:15px 20px; color:#1A7A4C; letter-spacing:-0.16em; font-size:18px; font-weight:500;">✓✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66; margin-top:12px;">Rules 2026/27. Eligibility depends on the company and on your circumstances.</div>
+    </div>
+
+    <!-- b) Investor journey -->
+    <div style="max-width:1180px; margin:0 auto; padding:48px 32px 8px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:18px;">b / The investor journey</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); border:1px solid #0A0A0A; background:#FFFFFF;">
+        <div style="padding:24px 22px; border-right:1px solid #E3E2DC;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">01 →</div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; margin-bottom:6px;">Invest</div>
+          <div style="font-size:14px; color:#6B6B66; line-height:1.5;">You commit capital through the fund. We deploy it across double-checked companies.</div>
+        </div>
+        <div style="padding:24px 22px; border-right:1px solid #E3E2DC;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">02 →</div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; margin-bottom:6px;">Certificate</div>
+          <div style="font-size:14px; color:#6B6B66; line-height:1.5;">Each company issues an <span style="font-family:'JetBrains Mono',monospace;">SEIS3</span> or <span style="font-family:'JetBrains Mono',monospace;">EIS3</span> certificate once trading.</div>
+        </div>
+        <div style="padding:24px 22px; border-right:1px solid #E3E2DC;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">03 →</div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; margin-bottom:6px;">Claim relief</div>
+          <div style="font-size:14px; color:#6B6B66; line-height:1.5;">You claim <span style="font-family:'JetBrains Mono',monospace;">50%</span> or <span style="font-family:'JetBrains Mono',monospace;">30%</span> income tax relief from HMRC.</div>
+        </div>
+        <div style="padding:24px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">04 ✓✓</div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; margin-bottom:6px;">Hold 3+ years</div>
+          <div style="font-size:14px; color:#6B6B66; line-height:1.5;">Hold for at least <span style="font-family:'JetBrains Mono',monospace;">3</span> years and any growth is free of capital gains tax.</div>
+        </div>
+      </div>
+      <div style="font-size:14px; color:#6B6B66; margin-top:14px; max-width:70ch;">If a company fails, loss relief lets you offset the net loss against your income or gains, softening the hit. The next section shows exactly how much.</div>
+    </div>
+
+    <!-- c) Downside protection bar -->
+    <div style="max-width:1180px; margin:0 auto; padding:48px 32px 64px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:18px;">c / What you actually risk</div>
+      <div style="border:1px solid #0A0A0A; background:#FFFFFF; padding:28px 26px;">
+        <div style="font-size:15.5px; color:#0A0A0A; margin-bottom:24px; max-width:72ch;">If a <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">£100</span> SEIS investment goes to zero, a <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">45%</span> taxpayer recovers <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">£72.50</span>. The real loss is <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">£27.50</span>, just over a quarter.</div>
+        <!-- bar -->
+        <div style="display:flex; height:54px; border:1px solid #0A0A0A;">
+          <div style="width:50%; background:#0A0A0A; color:#F7F6F2; display:flex; align-items:center; padding:0 14px; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:500;">£50.00</div>
+          <div style="width:22.5%; background:#6B6B66; color:#F7F6F2; display:flex; align-items:center; padding:0 12px; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:500; border-left:1px solid #F7F6F2;">£22.50</div>
+          <div style="width:27.5%; background:repeating-linear-gradient(135deg,#FFFFFF 0,#FFFFFF 5px,#E3E2DC 5px,#E3E2DC 6px); color:#0A0A0A; display:flex; align-items:center; padding:0 12px; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:500; border-left:1px solid #0A0A0A;">£27.50</div>
+        </div>
+        <!-- legend -->
+        <div style="display:flex; flex-wrap:wrap; gap:24px; margin-top:18px; font-size:13.5px;">
+          <span style="display:flex; align-items:center; gap:8px;"><span style="width:11px; height:11px; background:#0A0A0A; display:inline-block;"></span>Income tax relief</span>
+          <span style="display:flex; align-items:center; gap:8px;"><span style="width:11px; height:11px; background:#6B6B66; display:inline-block;"></span>Loss relief</span>
+          <span style="display:flex; align-items:center; gap:8px;"><span style="width:11px; height:11px; background:repeating-linear-gradient(135deg,#FFFFFF 0,#FFFFFF 3px,#E3E2DC 3px,#E3E2DC 4px); border:1px solid #0A0A0A; display:inline-block;"></span>Your real loss</span>
+          <span style="margin-left:auto; color:#6B6B66; font-family:'JetBrains Mono',monospace;">£72.50 protected · £27.50 at risk</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 02 WHY SEIS / EIS ===== -->
+  <section id="why" style="border-top:1px solid #E3E2DC;">
+    <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
+    <div style="max-width:1180px; margin:0 auto; padding:64px 32px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:36px;">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">02 / The reliefs in full</div>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0;">Why {{ whyScheme }}.</h2>
+        </div>
+        <div style="display:flex; border:1px solid #0A0A0A;">
+          <button onClick="{{ pickWhySeis }}" style="{{ whySeisBtn }}">SEIS</button>
+          <button onClick="{{ pickWhyEis }}" style="{{ whyEisBtn }}">EIS</button>
+        </div>
+      </div>
+
+      <!-- SEIS grid -->
+      <sc-if value="{{ whyIsSeis }}" hint-placeholder-val="{{ true }}">
+        <div style="border:1px solid #0A0A0A;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; background:#E3E2DC;">
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">Income tax relief</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">Claim back <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">50%</span> of what you invest against your income tax bill, on up to <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">£200,000</span> a year.</div></div>
+            </div>
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">Tax-free growth</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">Hold qualifying shares for at least <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">3</span> years and any gain on disposal is free of capital gains tax.</div></div>
+            </div>
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">Loss relief</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">If a company fails, offset the net loss against your income or gains at your marginal rate.</div></div>
+            </div>
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">CGT reinvestment relief</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">Reinvest a chargeable gain into SEIS shares and exempt up to <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">50%</span> of it from capital gains tax.</div></div>
+            </div>
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">Inheritance tax relief</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">Qualifying shares normally fall outside your estate for inheritance tax once held for <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">2</span> years.</div></div>
+            </div>
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">Earliest-stage access</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">Back founders from inception across a concentrated book, a stage individuals rarely reach alone.</div></div>
+            </div>
+          </div>
+          <div style="border-top:1px solid #E3E2DC; background:#FFFFFF; padding:20px 24px; font-size:13.5px; color:#6B6B66;">The tax treatment of each scheme depends on your individual circumstances and may change. Illustrative only. Not tax advice.</div>
+        </div>
+      </sc-if>
+
+      <!-- EIS grid -->
+      <sc-if value="{{ whyIsEis }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid #0A0A0A;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; background:#E3E2DC;">
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">Income tax relief</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">Claim back <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">30%</span> of what you invest against your income tax bill, on up to <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">£1,000,000</span> a year, or <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">£2,000,000</span> including knowledge-intensive companies.</div></div>
+            </div>
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">Tax-free growth</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">Hold qualifying shares for at least <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">3</span> years and any gain on disposal is free of capital gains tax.</div></div>
+            </div>
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">Loss relief</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">If a company fails, offset the net loss against your income or gains at your marginal rate.</div></div>
+            </div>
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">CGT deferral relief</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">Defer a chargeable gain from elsewhere by reinvesting it into EIS shares, for as long as you hold them.</div></div>
+            </div>
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">Inheritance tax relief</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">Qualifying shares normally fall outside your estate for inheritance tax once held for <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">2</span> years.</div></div>
+            </div>
+            <div style="background:#FFFFFF; padding:26px 24px; display:flex; flex-direction:column; gap:16px;">
+              <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; font-size:22px; font-weight:500; line-height:1;">✓✓</span>
+              <div style="display:flex; flex-direction:column; gap:8px;"><div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em;">Growth-stage access</div><div style="font-size:14.5px; color:#6B6B66; line-height:1.55;">Diversified exposure to established, growth-stage companies with proven traction.</div></div>
+            </div>
+          </div>
+          <div style="border-top:1px solid #E3E2DC; background:#FFFFFF; padding:20px 24px; font-size:13.5px; color:#6B6B66;">The tax treatment of each scheme depends on your individual circumstances and may change. Illustrative only. Not tax advice.</div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ===== 03 CALCULATOR ===== -->
+  <section id="calculator" style="border-top:1px solid #E3E2DC; background:#FFFFFF;">
+    <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
+    <div style="max-width:1180px; margin:0 auto; padding:64px 32px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">03 / Tax-relief calculator</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 36px; max-width:22ch;">See your real cost and worst case.</h2>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:40px; align-items:start;">
+        <!-- inputs -->
+        <div>
+          <!-- scheme -->
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:10px;">Scheme</div>
+          <div style="display:flex; border:1px solid #0A0A0A; margin-bottom:30px;">
+            <button onClick="{{ pickSeis }}" style="{{ seisBtn }}">SEIS · 50%</button>
+            <button onClick="{{ pickEis }}" style="{{ eisBtn }}">EIS · 30%</button>
+          </div>
+
+          <!-- rate -->
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:10px;">Your income tax rate</div>
+          <div style="display:flex; border:1px solid #0A0A0A; margin-bottom:30px;">
+            <button onClick="{{ pickR20 }}" style="{{ r20Btn }}">20%</button>
+            <button onClick="{{ pickR40 }}" style="{{ r40Btn }}">40%</button>
+            <button onClick="{{ pickR45 }}" style="{{ r45Btn }}">45%</button>
+          </div>
+
+          <!-- amount -->
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:10px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66;">Amount invested</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66;">max {{ maxLabel }}</span>
+          </div>
+          <div style="display:flex; align-items:center; border:1px solid #0A0A0A; margin-bottom:18px;">
+            <span style="padding:0 14px; font-family:'JetBrains Mono',monospace; font-size:20px; border-right:1px solid #E3E2DC; color:#6B6B66;">£</span>
+            <input type="text" inputMode="numeric" value="{{ amountField }}" onChange="{{ onAmount }}" onInput="{{ onAmount }}" aria-label="Amount invested in pounds" style="border:0; outline:none; flex:1; padding:13px 14px; font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:500; background:transparent; min-width:0;" />
+          </div>
+          <input type="range" min="0" max="{{ sliderMax }}" step="500" value="{{ amount }}" onInput="{{ onSlider }}" aria-label="Amount invested slider" style="width:100%; height:18px;" />
+        </div>
+
+        <!-- outputs -->
+        <div style="border:1px solid #0A0A0A; background:#F7F6F2;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:20px 22px; border-bottom:1px solid #E3E2DC;">
+            <span style="font-size:15px; color:#6B6B66;">Income tax relief back</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; font-size:24px; font-weight:500;">{{ reliefStr }}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:20px 22px; border-bottom:1px solid #E3E2DC;">
+            <span style="font-size:15px; color:#6B6B66;">Net cost after relief</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; font-size:24px; font-weight:500;">{{ netStr }}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:20px 22px;">
+            <span style="font-size:15px; color:#0A0A0A; font-weight:500;">Real loss if it goes to zero</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; font-size:24px; font-weight:500;">{{ realLossStr }}</span>
+          </div>
+          <!-- live split bar -->
+          <div style="padding:0 22px 22px;">
+            <div style="display:flex; height:34px; border:1px solid #0A0A0A;">
+              <div style="background:#F2B705; width:{{ wRelief }};"></div>
+              <div style="background:#6B6B66; width:{{ wLossRelief }}; border-left:1px solid #F7F6F2;"></div>
+              <div style="background:repeating-linear-gradient(135deg,#F7F6F2 0,#F7F6F2 5px,#E3E2DC 5px,#E3E2DC 6px); width:{{ wRealLoss }}; border-left:1px solid #0A0A0A;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#6B6B66;">
+              <span>tax relief</span><span>loss relief</span><span>real loss</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66; margin-top:24px;">Illustrative only. Not tax advice. Loss relief assumes the net loss is offset at your marginal rate.</div>
+    </div>
+  </section>
+
+  <!-- ===== 03 STRATEGY ===== -->
+  <section id="strategy" style="border-top:1px solid #E3E2DC;">
+    <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
+    <div style="max-width:1180px; margin:0 auto; padding:64px 32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:56px; align-items:start;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">04 / Our strategy</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 26px; max-width:18ch;">How we choose what to back.</h2>
+        <p style="font-size:16.5px; color:#0A0A0A; line-height:1.65; max-width:54ch; margin:0 0 18px;">The fund backs UK pre-seed and seed companies that qualify for SEIS or EIS: operator-led teams, a defined buyer, and software that grows on recurring revenue. We hold a concentrated book of <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">8–12</span> companies rather than spreading capital thin.</p>
+        <p style="font-size:16.5px; color:#6B6B66; line-height:1.65; max-width:54ch; margin:0 0 30px;">Every company clears the same double-check: financials, legals and HMRC advance assurance, confirmed before a penny is committed. We never charge the companies we back, keeping cap tables clean. Investors get plain terms and a written update every quarter, holdings and valuations included.</p>
+        <a href="#fund" style="text-decoration:none; border:1px solid #0A0A0A; color:#0A0A0A; padding:13px 25px; font-weight:500; font-size:15px; display:inline-block;">Fund overview</a>
+      </div>
+
+      <!-- ghosted strategy stack -->
+      <div style="border:1px solid #0A0A0A; background:#FFFFFF; padding:clamp(28px,4vw,44px);">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:24px;">Our focus</div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(30px,3.8vw,50px); line-height:1.12; letter-spacing:-0.025em;">
+          <sc-for list="{{ focusLines }}" as="line" hint-placeholder-count="4">
+            <div style="display:flex; align-items:center; gap:0px;">
+              <div style="{{ line.barStyle }}"></div>
+              <div style="{{ line.textStyle }}">{{ line.text }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="border-top:1px solid #E3E2DC; margin-top:28px; padding-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#E3E2DC;">
+          <div style="background:#FFFFFF; padding:14px 4px 6px;"><div style="font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:500;">8–12</div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66; margin-top:4px;">companies held</div></div>
+          <div style="background:#FFFFFF; padding:14px 4px 6px;"><div style="font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:500;">£0</div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66; margin-top:4px;">charged to founders</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 04 THE FUND ===== -->
+  <section id="fund" style="border-top:1px solid #E3E2DC;">
+    <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
+    <div style="max-width:1180px; margin:0 auto; padding:64px 32px 24px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">05 / The fund</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0; max-width:20ch;">The DoubleCheque SEIS &amp; EIS Fund.</h2>
+    </div>
+
+    <!-- target returns -->
+    <div style="max-width:1180px; margin:0 auto; padding:24px 32px 8px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:16px;">Target returns</div>
+      <div style="overflow-x:auto;">
+        <div style="min-width:540px; border:1px solid #0A0A0A; background:#FFFFFF;">
+          <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr; border-bottom:1px solid #0A0A0A;">
+            <div style="padding:16px 20px;">&nbsp;</div>
+            <div style="padding:16px 20px; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:16px; border-left:1px solid #E3E2DC;">Pre-tax</div>
+            <div style="padding:16px 20px; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:16px; border-left:1px solid #E3E2DC;">Post-tax*</div>
+          </div>
+          <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr; border-bottom:1px solid #E3E2DC;">
+            <div style="padding:15px 20px; color:#6B6B66; font-size:15px;">Target multiple</div>
+            <div style="padding:15px 20px; font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; font-weight:500; font-size:15px; border-left:1px solid #E3E2DC;">3–5×</div>
+            <div style="padding:15px 20px; font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; font-weight:500; font-size:15px; border-left:1px solid #E3E2DC;">7–12×</div>
+          </div>
+          <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr; border-bottom:1px solid #E3E2DC;">
+            <div style="padding:15px 20px; color:#6B6B66; font-size:15px;">Target IRR</div>
+            <div style="padding:15px 20px; font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; font-weight:500; font-size:15px; border-left:1px solid #E3E2DC;">~25%</div>
+            <div style="padding:15px 20px; font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; font-weight:500; font-size:15px; border-left:1px solid #E3E2DC;">~50%</div>
+          </div>
+          <div style="display:grid; grid-template-columns:1.5fr 2fr;">
+            <div style="padding:15px 20px; color:#6B6B66; font-size:15px;">Time horizon</div>
+            <div style="padding:15px 20px; font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; font-weight:500; font-size:15px; border-left:1px solid #E3E2DC;">5–7 years</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66; margin-top:12px; max-width:80ch; line-height:1.6;">*Post-tax assumes SEIS/EIS reliefs claimed at the maximum rate. Targets are illustrative, not a forecast or a guarantee of future returns. Capital is at risk and you may get back less than you invest.</div>
+    </div>
+
+    <div style="max-width:1180px; margin:0 auto; padding:24px 32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:36px; align-items:start;">
+      <!-- key facts term sheet -->
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:16px;">Key facts</div>
+        <div style="border:1px solid #0A0A0A; background:#FFFFFF; font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; font-size:15px;">
+          <div style="display:flex; justify-content:space-between; padding:15px 20px; border-bottom:1px solid #E3E2DC;"><span style="font-family:'Inter',sans-serif; color:#6B6B66;">Sector</span><span>UK early-stage tech</span></div>
+          <div style="display:flex; justify-content:space-between; padding:15px 20px; border-bottom:1px solid #E3E2DC;"><span style="font-family:'Inter',sans-serif; color:#6B6B66;">Target holdings</span><span>8–12 companies</span></div>
+          <div style="display:flex; justify-content:space-between; padding:15px 20px; border-bottom:1px solid #E3E2DC;"><span style="font-family:'Inter',sans-serif; color:#6B6B66;">Minimum subscription</span><span>£20,000</span></div>
+          <div style="display:flex; justify-content:space-between; padding:15px 20px;"><span style="font-family:'Inter',sans-serif; color:#6B6B66;">Application deadline</span><span>5 Apr 2027</span></div>
+        </div>
+
+        <!-- documents -->
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin:30px 0 16px;">Documents</div>
+        <div style="border:1px solid #0A0A0A; background:#FFFFFF;">
+          <a href="#fund" style="display:flex; justify-content:space-between; align-items:center; padding:16px 20px; text-decoration:none; border-bottom:1px solid #E3E2DC;"><span style="font-weight:500;">Information Memorandum</span><span style="font-family:'JetBrains Mono',monospace; color:#6B6B66;">PDF →</span></a>
+          <a href="#fund" style="display:flex; justify-content:space-between; align-items:center; padding:16px 20px; text-decoration:none;"><span style="font-weight:500;">Key Information Document</span><span style="font-family:'JetBrains Mono',monospace; color:#6B6B66;">PDF →</span></a>
+        </div>
+      </div>
+
+      <!-- charges + team -->
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:16px;">Charges</div>
+        <div style="border:1px solid #0A0A0A; background:#FFFFFF; font-size:15px;">
+          <div style="display:flex; justify-content:space-between; padding:15px 20px; border-bottom:1px solid #E3E2DC;"><span style="color:#6B6B66;">Initial charge</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">2.0%</span></div>
+          <div style="display:flex; justify-content:space-between; padding:15px 20px; border-bottom:1px solid #E3E2DC;"><span style="color:#6B6B66;">Annual management charge</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">1.5% + VAT</span></div>
+          <div style="display:flex; justify-content:space-between; padding:15px 20px; border-bottom:1px solid #E3E2DC;"><span style="color:#6B6B66;">Performance fee, over 100% hurdle</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">20%</span></div>
+          <div style="display:flex; justify-content:space-between; padding:15px 20px;"><span style="color:#6B6B66;">Dealing &amp; admin fee</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">Nil</span></div>
+        </div>
+
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin:30px 0 16px;">The team</div>
+        <div style="border:1px solid #0A0A0A; background:#FFFFFF; padding:24px 22px;">
+          <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+            <div role="img" aria-label="Farid Gasanov" onMouseOver="{{ photoColor }}" onMouseOut="{{ photoGray }}" style="filter:grayscale(1) contrast(1.04); transition:filter 0.4s ease; width:138px; height:160px; flex:none; border:1px solid #0A0A0A; background-image:url('farid-gasanov.jpg'); background-size:150%; background-position:52% 50%; background-repeat:no-repeat;"></div>
+            <div style="flex:1; min-width:200px;">
+              <div style="font-weight:500; font-size:17px;">Farid Gasanov</div>
+              <div style="font-size:13.5px; color:#6B6B66; margin-top:2px;">Managing partner &amp; founder</div>
+              <p style="font-size:14px; color:#6B6B66; line-height:1.6; margin:14px 0 0;">Farid founded DoubleCheque after building an accountancy and tax practice for UK founders. Born in Georgia and raised in Azerbaijan, he works across the full range of accounting, audit and tax, the same rigour every deal is checked against. He chairs the investment committee and signs off each company before it enters the fund.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:1180px; margin:0 auto; padding:30px 32px 64px;">
+      <div style="border:1px solid #0A0A0A; background:#0A0A0A; color:#F7F6F2; padding:32px 30px; display:flex; flex-wrap:wrap; gap:24px; align-items:center; justify-content:space-between;">
+        <div style="max-width:46ch;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:22px; margin-bottom:6px;">Apply before the tax year closes.</div>
+          <div style="font-size:14.5px; color:#E3E2DC;">Subscriptions for the 2026/27 allowance close <span style="font-family:'JetBrains Mono',monospace;">5 Apr 2027</span>. Capital at risk.</div>
+        </div>
+        <a href="#" onClick="{{ openInvestor }}" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:14px 28px; font-weight:500; font-size:15px; white-space:nowrap;">Apply to invest</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 06 PORTFOLIO ===== -->
+  <section id="portfolio" style="border-top:1px solid #E3E2DC;">
+    <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
+    <div style="max-width:1180px; margin:0 auto; padding:64px 32px 24px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">06 / Portfolio</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0; max-width:20ch;">A few of the companies we back.</h2>
+    </div>
+    <div style="max-width:1180px; margin:0 auto; padding:24px 32px 64px;">
+      <div style="border:1px solid #0A0A0A;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:1px; background:#E3E2DC;">
+          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
+            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><image-slot id="logo-wolf" shape="rect" fit="contain" position="0% 50%" placeholder="Drop logo" style="width:150px; height:46px; display:block;"></image-slot></div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Consumer · gaming</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">Wolf Escape Games</div>
+            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">Award-winning online escape rooms, played in any browser. Featured in the national press.</div>
+            <a href="https://wolfescapegames.com" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">wolfescapegames.com →</a>
+          </div>
+          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
+            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><image-slot id="logo-stackt" shape="rect" fit="contain" position="0% 50%" placeholder="Drop logo" style="width:150px; height:46px; display:block;"></image-slot></div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Logistics · prop-tech</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">Stackt</div>
+            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">On-demand moving and storage for London, booked and managed entirely online.</div>
+            <a href="https://www.stackt.co.uk" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">stackt.co.uk →</a>
+          </div>
+          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
+            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><image-slot id="logo-notbet" shape="rect" fit="contain" position="0% 50%" placeholder="Drop logo" style="width:150px; height:46px; display:block;"></image-slot></div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Consumer · mobile</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">NotBet</div>
+            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">A free-to-play prediction game: call real-world outcomes, with nothing staked.</div>
+            <a href="https://notbet.com/en" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">notbet.com →</a>
+          </div>
+          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
+            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><image-slot id="logo-golborne" shape="rect" fit="contain" position="0% 50%" placeholder="Drop logo" style="width:150px; height:46px; display:block;"></image-slot></div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Food &amp; drink · retail</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">Golborne Fine Wine Deli</div>
+            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">An independent fine-wine merchant and deli in west London.</div>
+            <a href="https://golbornefinewinedeli.com" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">golbornefinewinedeli.com →</a>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66; margin-top:12px;">Holdings shown are illustrative of the fund's focus. Past investments are not a guide to future returns.</div>
+    </div>
+  </section>
+
+  <!-- ===== 04 FOUNDERS ===== -->
+  <section id="founders" style="border-top:1px solid #E3E2DC;">
+    <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
+    <div style="max-width:1180px; margin:0 auto; padding:64px 32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:48px; align-items:start;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">07 / Founders</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(26px,3.2vw,38px); line-height:1.1; letter-spacing:-0.02em; margin:0 0 14px; max-width:18ch;">Raising your first round?</h2>
+        <p style="font-size:16.5px; color:#6B6B66; line-height:1.6; max-width:48ch; margin:0 0 24px;">We invest in UK companies with SEIS or EIS advance assurance. If your numbers stand up to a double-check, we move quickly.</p>
+        <div style="border:1px solid #0A0A0A; background:#FFFFFF; font-size:14.5px;">
+          <div style="display:flex; gap:12px; padding:14px 18px; border-bottom:1px solid #E3E2DC;"><span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; flex:none;">✓✓</span><span>UK-registered, under the SEIS/EIS limits</span></div>
+          <div style="display:flex; gap:12px; padding:14px 18px; border-bottom:1px solid #E3E2DC;"><span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; flex:none;">✓✓</span><span>Advance assurance in hand, or eligible for it</span></div>
+          <div style="display:flex; gap:12px; padding:14px 18px;"><span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.16em; flex:none;">✓✓</span><span>Evidence of early traction or a working product</span></div>
+        </div>
+      </div>
+
+      <!-- founder CTA -->
+      <div style="border:1px solid #0A0A0A; background:#FFFFFF; padding:30px 28px; display:flex; flex-direction:column; gap:18px; align-self:start;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66;">Apply for funding</div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:22px; letter-spacing:-0.015em;">Send us your company.</div>
+        <p style="font-size:14.5px; color:#6B6B66; line-height:1.6; margin:0;">A short form to start. We read every submission and reply within ten working days.</p>
+        <div><a href="#" onClick="{{ openFounder }}" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:14px 28px; font-weight:500; font-size:15px; display:inline-block;">Apply for funding</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="border-top:1px solid #0A0A0A; background:#F7F6F2;">
+    <div style="max-width:1180px; margin:0 auto; padding:48px 32px 40px;">
+      <div style="display:flex; align-items:baseline; gap:9px; font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:500; letter-spacing:-0.01em; margin-bottom:24px;">
+        <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.18em;">✓✓</span>
+        <span>DoubleCheque</span>
+      </div>
+      <p style="font-size:13px; color:#6B6B66; line-height:1.7; max-width:90ch; margin:0 0 16px;"><span style="color:#0A0A0A; font-weight:500;">Risk warning.</span> Investing in early-stage companies through SEIS and EIS puts your capital at risk and you may lose all of it. These investments are illiquid and hard to sell. Tax reliefs depend on your individual circumstances, on the companies maintaining their qualifying status, and may change. Past performance is not a guide to the future. This is a high-risk, long-term investment. Only invest money you can afford to lose. Illustrative only. Not tax advice.</p>
+      <p style="font-size:13px; color:#6B6B66; line-height:1.7; max-width:90ch; margin:0 0 28px;">DoubleCheque Capital LLP is authorised and regulated by the Financial Conduct Authority (FRN 000000). Registered in England &amp; Wales. This website is a financial promotion approved by DoubleCheque Capital LLP and is directed only at investors who qualify as high-net-worth or sophisticated.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:24px; font-size:13.5px; border-top:1px solid #E3E2DC; padding-top:24px;">
+        <a href="#fund" style="text-decoration:none; color:#0A0A0A;">Terms</a>
+        <a href="#fund" style="text-decoration:none; color:#0A0A0A;">Privacy</a>
+        <a href="#fund" style="text-decoration:none; color:#0A0A0A;">Cookies</a>
+        <a href="#fund" style="text-decoration:none; color:#0A0A0A;">Complaints</a>
+        <span style="margin-left:auto; color:#6B6B66; font-family:'JetBrains Mono',monospace;">© 2026 DoubleCheque Capital LLP</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== INVESTOR MODAL ===== -->
+  <sc-if value="{{ investorModal }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Apply to invest" onClick="{{ closeModals }}" style="position:fixed; inset:0; z-index:100; background:rgba(10,10,10,0.55); display:flex; align-items:flex-start; justify-content:center; padding:5vh 18px; overflow-y:auto; animation:dc-fade 0.15s ease;">
+      <div onClick="{{ stopProp }}" style="background:#F7F6F2; border:1px solid #0A0A0A; max-width:640px; width:100%; margin:auto; padding:32px 30px 34px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66;">Apply to invest</div>
+          <button onClick="{{ closeModals }}" aria-label="Close" style="background:transparent; border:0; font-size:26px; line-height:1; color:#0A0A0A; cursor:pointer; padding:0 2px;">×</button>
+        </div>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:24px; letter-spacing:-0.015em; margin:8px 0 8px;">Register your interest</h3>
+        <p style="font-size:14.5px; color:#6B6B66; line-height:1.6; margin:0 0 26px;">Open only to investors who qualify as high-net-worth or sophisticated. We will send the Information Memorandum and arrange a call. No money is committed at this stage.</p>
+        <sc-if value="{{ investorOpen }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submitInvestor }}" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px;">
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Full name</label>
+              <input type="text" required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Email</label>
+              <input type="email" required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Investor classification</label>
+              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;">
+                <option value="">Select one</option>
+                <option>High-net-worth individual</option>
+                <option>Self-certified sophisticated investor</option>
+                <option>Financial adviser</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Scheme of interest</label>
+              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;">
+                <option value="">Select one</option>
+                <option>SEIS</option>
+                <option>EIS</option>
+                <option>Both</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Amount considering (£)</label>
+              <input type="text" inputMode="numeric" placeholder="20,000" style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Phone (optional)</label>
+              <input type="tel" style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
+            </div>
+            <div style="grid-column:1/-1;">
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Anything we should know (optional)</label>
+              <textarea rows="3" style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+            </div>
+            <label style="grid-column:1/-1; display:flex; gap:12px; align-items:flex-start; font-size:14px; color:#6B6B66; line-height:1.5; cursor:pointer;">
+              <input type="checkbox" required style="margin-top:3px; width:16px; height:16px; flex:none; accent-color:#0A0A0A;" />
+              <span>I have read the risk warning and understand my capital is at risk and I may lose all of my investment.</span>
+            </label>
+            <div style="grid-column:1/-1;">
+              <button type="submit" style="background:#F2B705; color:#0A0A0A; border:0; padding:14px 30px; font-family:'Inter',sans-serif; font-weight:500; font-size:15px; cursor:pointer;">Apply to invest</button>
+            </div>
+          </form>
+        </sc-if>
+        <sc-if value="{{ investorSent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; gap:16px; align-items:flex-start; border:1px solid #0A0A0A; background:#FFFFFF; padding:24px 24px;">
+            <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; font-size:22px; letter-spacing:-0.2em; font-weight:500; line-height:1;">✓✓</span>
+            <div style="flex:1;">
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; margin-bottom:4px;">Application received.</div>
+              <div style="font-size:14.5px; color:#6B6B66; line-height:1.6; margin-bottom:18px;">We will send the Information Memorandum and be in touch within five working days.</div>
+              <button onClick="{{ closeModals }}" style="background:#0A0A0A; color:#F7F6F2; border:0; padding:11px 22px; font-family:'Inter',sans-serif; font-weight:500; font-size:14px; cursor:pointer;">Close</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ===== FOUNDER MODAL ===== -->
+  <sc-if value="{{ founderModal }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Apply for funding" onClick="{{ closeModals }}" style="position:fixed; inset:0; z-index:100; background:rgba(10,10,10,0.55); display:flex; align-items:flex-start; justify-content:center; padding:5vh 18px; overflow-y:auto; animation:dc-fade 0.15s ease;">
+      <div onClick="{{ stopProp }}" style="background:#F7F6F2; border:1px solid #0A0A0A; max-width:640px; width:100%; margin:auto; padding:32px 30px 34px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66;">Apply for funding</div>
+          <button onClick="{{ closeModals }}" aria-label="Close" style="background:transparent; border:0; font-size:26px; line-height:1; color:#0A0A0A; cursor:pointer; padding:0 2px;">×</button>
+        </div>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:24px; letter-spacing:-0.015em; margin:8px 0 8px;">Send us your company</h3>
+        <p style="font-size:14.5px; color:#6B6B66; line-height:1.6; margin:0 0 26px;">For UK companies with SEIS or EIS advance assurance, or eligible for it. We read every submission and reply within ten working days.</p>
+        <sc-if value="{{ founderOpen }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submitFounder }}" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px;">
+            <div style="grid-column:1/-1;">
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Company name</label>
+              <input type="text" required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Your name</label>
+              <input type="text" required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Email</label>
+              <input type="email" required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Website</label>
+              <input type="url" placeholder="https://" style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:14px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Stage</label>
+              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;">
+                <option value="">Select one</option>
+                <option>Pre-seed</option>
+                <option>Seed</option>
+                <option>Series A</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Advance assurance</label>
+              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;">
+                <option value="">Select one</option>
+                <option>We have it</option>
+                <option>Applied for it</option>
+                <option>Not yet</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Raising (£)</label>
+              <input type="text" inputMode="numeric" placeholder="250,000" style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
+            </div>
+            <div>
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">MRR (£)</label>
+              <input type="text" inputMode="numeric" placeholder="5,000" style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
+            </div>
+            <div style="grid-column:1/-1;">
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Pitch deck</label>
+              <input type="url" placeholder="Link to your deck" style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:14px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
+            </div>
+            <div style="grid-column:1/-1;">
+              <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">What you do, in one line</label>
+              <textarea rows="2" required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+            </div>
+            <div style="grid-column:1/-1;">
+              <button type="submit" style="background:#F2B705; color:#0A0A0A; border:0; padding:14px 30px; font-family:'Inter',sans-serif; font-weight:500; font-size:15px; cursor:pointer;">Apply for funding</button>
+            </div>
+          </form>
+        </sc-if>
+        <sc-if value="{{ founderSent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; gap:16px; align-items:flex-start; border:1px solid #0A0A0A; background:#FFFFFF; padding:24px 24px;">
+            <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; font-size:22px; letter-spacing:-0.2em; font-weight:500; line-height:1;">✓✓</span>
+            <div style="flex:1;">
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; margin-bottom:4px;">Pitch received.</div>
+              <div style="font-size:14.5px; color:#6B6B66; line-height:1.6; margin-bottom:18px;">If it fits the fund, we will reply within ten working days. We read every submission.</div>
+              <button onClick="{{ closeModals }}" style="background:#0A0A0A; color:#F7F6F2; border:0; padding:11px 22px; font-family:'Inter',sans-serif; font-weight:500; font-size:14px; cursor:pointer;">Close</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ===== PERSISTENT RISK BAR ===== -->
+  <div style="position:fixed; left:0; right:0; bottom:0; z-index:60; background:#0A0A0A; color:#F7F6F2; border-top:1px solid #0A0A0A; padding:8px 32px; font-size:11.5px; font-family:'JetBrains Mono',monospace; letter-spacing:0.01em; text-align:center; line-height:1.4;">
+    Capital at risk · You may lose all your investment · Tax reliefs depend on circumstances and may change · Not tax advice
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { scheme: 'SEIS', rate: 0.45, amount: 20000, whyScheme: 'SEIS', investorSent: false, founderSent: false, investorModal: false, founderModal: false, focusIdx: 0 };
+
+  openModal(which) {
+    if (which === 'investor') this.setState({ investorModal: true, investorSent: false });
+    else this.setState({ founderModal: true, founderSent: false });
+    try { document.body.style.overflow = 'hidden'; } catch (e) {}
+  }
+  closeModals() {
+    this.setState({ investorModal: false, founderModal: false });
+    try { document.body.style.overflow = ''; } catch (e) {}
+  }
+
+  schemeMax(s) { return s === 'SEIS' ? 200000 : 1000000; }
+
+  fmtMoney(n) {
+    const r = Math.round(n);
+    return '£' + r.toLocaleString('en-GB');
+  }
+
+  setAmount(raw) {
+    const digits = String(raw).replace(/[^0-9]/g, '');
+    let v = digits === '' ? 0 : parseInt(digits, 10);
+    const max = this.schemeMax(this.state.scheme);
+    if (v > max) v = max;
+    this.setState({ amount: v });
+  }
+
+  componentDidMount() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const rules = document.querySelectorAll('[data-reveal]');
+    rules.forEach((el) => {
+      if (reduce) { el.style.transform = 'scaleX(1)'; return; }
+      el.style.transform = 'scaleX(0)';
+      el.style.transition = 'transform 0.7s cubic-bezier(0.22,1,0.36,1)';
+    });
+    if (reduce || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.transform = 'scaleX(1)';
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    rules.forEach((el) => io.observe(el));
+
+    this._onKey = (e) => { if (e.key === 'Escape') this.closeModals(); };
+    document.addEventListener('keydown', this._onKey);
+
+    if (!reduce) {
+      this._focusTimer = setInterval(() => {
+        this.setState((s) => ({ focusIdx: (s.focusIdx + 1) % 4 }));
+      }, 1900);
+    }
+
+    const navLinks = {};
+    document.querySelectorAll('header nav a[href^="#"]').forEach((a) => {
+      const id = a.getAttribute('href').slice(1);
+      if (id) {
+        navLinks[id] = a;
+        a.style.borderBottom = '2px solid transparent';
+        a.style.paddingBottom = '3px';
+        a.style.transition = 'border-color 0.2s ease';
+      }
+    });
+    const navIds = Object.keys(navLinks);
+    const setActiveNav = (id) => {
+      navIds.forEach((k) => {
+        const a = navLinks[k];
+        const on = k === id;
+        a.style.borderBottomColor = on ? '#0A0A0A' : 'transparent';
+        a.style.fontWeight = on ? '500' : '400';
+      });
+    };
+    this._navScroll = () => {
+      let current = navIds[0];
+      for (const id of navIds) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 130) current = id;
+      }
+      setActiveNav(current);
+    };
+    window.addEventListener('scroll', this._navScroll, { passive: true });
+    this._navScroll();
+  }
+
+  componentWillUnmount() {
+    if (this._onKey) document.removeEventListener('keydown', this._onKey);
+    if (this._focusTimer) clearInterval(this._focusTimer);
+    if (this._navScroll) window.removeEventListener('scroll', this._navScroll);
+  }
+
+  renderVals() {
+    const { scheme, rate, amount } = this.state;
+    const reliefRate = scheme === 'SEIS' ? 0.5 : 0.3;
+    const relief = amount * reliefRate;
+    const net = amount - relief;
+    const lossRelief = net * rate;
+    const realLoss = net - lossRelief;
+    const max = this.schemeMax(scheme);
+
+    const btnBase = "flex:1; padding:13px 10px; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:500; cursor:pointer; border:0; text-align:center;";
+    const on = "background:#0A0A0A; color:#F7F6F2;";
+    const off = "background:#FFFFFF; color:#0A0A0A;";
+    const div = "border-left:1px solid #0A0A0A;";
+
+    const pct = (x) => (amount > 0 ? (x / amount) * 100 : 0).toFixed(2) + '%';
+
+    return {
+      scheme,
+      amount,
+      sliderMax: max,
+      maxLabel: this.fmtMoney(max),
+      amountField: amount.toLocaleString('en-GB'),
+      reliefStr: this.fmtMoney(relief),
+      netStr: this.fmtMoney(net),
+      realLossStr: this.fmtMoney(realLoss),
+      wRelief: pct(relief),
+      wLossRelief: pct(lossRelief),
+      wRealLoss: pct(realLoss),
+
+      focusLines: ['Earliest stage', 'Operator-led', 'Disciplined selection', 'SEIS-first cheque'].map((t, i) => ({
+        text: t,
+        textStyle: 'transition:color 0.55s ease; color:' + (i === this.state.focusIdx ? '#0A0A0A' : '#E3E2DC') + ';',
+        barStyle: 'flex:none; height:0.42em; background:#F2B705; transition:width 0.5s cubic-bezier(0.22,1,0.36,1), margin-right 0.5s cubic-bezier(0.22,1,0.36,1); width:' + (i === this.state.focusIdx ? '22px' : '0px') + '; margin-right:' + (i === this.state.focusIdx ? '14px' : '0px') + ';',
+      })),
+
+      photoColor: (e) => { e.currentTarget.style.filter = 'grayscale(0) contrast(1)'; },
+      photoGray: (e) => { e.currentTarget.style.filter = 'grayscale(1) contrast(1.04)'; },
+
+      whyScheme: this.state.whyScheme,
+      whyIsSeis: this.state.whyScheme === 'SEIS',
+      whyIsEis: this.state.whyScheme === 'EIS',
+      whySeisBtn: btnBase + (this.state.whyScheme === 'SEIS' ? on : off),
+      whyEisBtn: btnBase + div + (this.state.whyScheme === 'EIS' ? on : off),
+      pickWhySeis: () => this.setState({ whyScheme: 'SEIS' }),
+      pickWhyEis: () => this.setState({ whyScheme: 'EIS' }),
+
+      investorOpen: !this.state.investorSent,
+      investorSent: this.state.investorSent,
+      founderOpen: !this.state.founderSent,
+      founderSent: this.state.founderSent,
+      submitInvestor: (e) => { e.preventDefault(); this.setState({ investorSent: true }); },
+      submitFounder: (e) => { e.preventDefault(); this.setState({ founderSent: true }); },
+      investorModal: this.state.investorModal,
+      founderModal: this.state.founderModal,
+      openInvestor: (e) => { if (e) e.preventDefault(); this.openModal('investor'); },
+      openFounder: (e) => { if (e) e.preventDefault(); this.openModal('founder'); },
+      closeModals: (e) => { if (e) e.preventDefault(); this.closeModals(); },
+      stopProp: (e) => { e.stopPropagation(); },
+
+      seisBtn: btnBase + (scheme === 'SEIS' ? on : off),
+      eisBtn: btnBase + div + (scheme === 'EIS' ? on : off),
+      r20Btn: btnBase + (rate === 0.2 ? on : off),
+      r40Btn: btnBase + div + (rate === 0.4 ? on : off),
+      r45Btn: btnBase + div + (rate === 0.45 ? on : off),
+
+      pickSeis: () => this.setState({ scheme: 'SEIS', amount: Math.min(this.state.amount, 200000) }),
+      pickEis: () => this.setState({ scheme: 'EIS' }),
+      pickR20: () => this.setState({ rate: 0.2 }),
+      pickR40: () => this.setState({ rate: 0.4 }),
+      pickR45: () => this.setState({ rate: 0.45 }),
+      onAmount: (e) => this.setAmount(e.target.value),
+      onSlider: (e) => this.setState({ amount: parseInt(e.target.value, 10) || 0 }),
+    };
+  }
+}
+</script>
+</body>
+</html>
