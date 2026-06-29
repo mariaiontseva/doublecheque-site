@@ -25,7 +25,8 @@
   input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:18px; height:18px; margin-top:-8px; background:#0A0A0A; border:0; cursor:pointer; }
   input[type=range]::-moz-range-thumb{ width:18px; height:18px; border:0; border-radius:0; background:#0A0A0A; cursor:pointer; }
   input[type=range]:focus-visible::-webkit-slider-thumb{ outline:2px solid #1A7A4C; outline-offset:2px; }
-  a:focus-visible, button:focus-visible, input:focus-visible{ outline:2px solid #1A7A4C; outline-offset:3px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{ outline:2px solid #1A7A4C; outline-offset:3px; }
+  select{ background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgMTIgOCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTEgMS41IDYgNi41IDExIDEuNSIgc3Ryb2tlPSIjNkI2QjY2IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+"); background-repeat:no-repeat; background-position:right 14px center; background-size:12px 8px; }
 </style>
 </helmet>
 <div style="background:#F7F6F2; color:#0A0A0A; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; line-height:1.5; padding-bottom:34px;">
@@ -563,7 +564,7 @@
             </div>
             <div>
               <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Investor classification</label>
-              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;">
+              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background-color:#FFFFFF; -webkit-appearance:none; -moz-appearance:none; appearance:none; padding:12px 38px 12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box; cursor:pointer;">
                 <option value="">Select one</option>
                 <option>High-net-worth individual</option>
                 <option>Self-certified sophisticated investor</option>
@@ -572,7 +573,7 @@
             </div>
             <div>
               <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Scheme of interest</label>
-              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;">
+              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background-color:#FFFFFF; -webkit-appearance:none; -moz-appearance:none; appearance:none; padding:12px 38px 12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box; cursor:pointer;">
                 <option value="">Select one</option>
                 <option>SEIS</option>
                 <option>EIS</option>
@@ -591,10 +592,6 @@
               <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Anything we should know (optional)</label>
               <textarea rows="3" style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
             </div>
-            <label style="grid-column:1/-1; display:flex; gap:12px; align-items:flex-start; font-size:14px; color:#6B6B66; line-height:1.5; cursor:pointer;">
-              <input type="checkbox" required style="margin-top:3px; width:16px; height:16px; flex:none; accent-color:#0A0A0A;" />
-              <span>I have read the risk warning and understand my capital is at risk and I may lose all of my investment.</span>
-            </label>
             <div style="grid-column:1/-1;">
               <button type="submit" style="background:#F2B705; color:#0A0A0A; border:0; padding:14px 30px; font-family:'Inter',sans-serif; font-weight:500; font-size:15px; cursor:pointer;">Apply to invest</button>
             </div>
@@ -644,7 +641,7 @@
             </div>
             <div>
               <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Stage</label>
-              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;">
+              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background-color:#FFFFFF; -webkit-appearance:none; -moz-appearance:none; appearance:none; padding:12px 38px 12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box; cursor:pointer;">
                 <option value="">Select one</option>
                 <option>Pre-seed</option>
                 <option>Seed</option>
@@ -653,7 +650,7 @@
             </div>
             <div>
               <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Advance assurance</label>
-              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;">
+              <select required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background-color:#FFFFFF; -webkit-appearance:none; -moz-appearance:none; appearance:none; padding:12px 38px 12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box; cursor:pointer;">
                 <option value="">Select one</option>
                 <option>We have it</option>
                 <option>Applied for it</option>
