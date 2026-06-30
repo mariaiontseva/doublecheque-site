@@ -42,10 +42,10 @@
         <span>DoubleCheque</span>
       </a>
       <nav style="display:flex; align-items:center; gap:28px; flex-wrap:wrap; font-size:14.5px;">
-        <a href="#how" style="text-decoration:none; color:#6B6B66;">How it works</a>
-        <a href="#calculator" style="text-decoration:none; color:#6B6B66;">Calculator</a>
         <a href="#strategy" style="text-decoration:none; color:#6B6B66;">Strategy</a>
         <a href="#portfolio" style="text-decoration:none; color:#6B6B66;">Portfolio</a>
+        <a href="#how" style="text-decoration:none; color:#6B6B66;">How it works</a>
+        <a href="#calculator" style="text-decoration:none; color:#6B6B66;">Calculator</a>
         <a href="#founders" data-cta style="text-decoration:none; background:transparent; color:#0A0A0A; padding:8px 15px; font-weight:500; font-size:14px; border:1px solid #0A0A0A;">For founders</a>
         <a href="#" onClick="{{ openInvestor }}" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:9px 18px; font-weight:500; font-size:14px;">Invest</a>
       </nav>
@@ -60,6 +60,80 @@
     <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:40px;">
       <a href="#" onClick="{{ openInvestor }}" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:14px 26px; font-weight:500; font-size:15px;">Invest</a>
       <a href="#founders" style="text-decoration:none; background:transparent; color:#0A0A0A; padding:13px 25px; font-weight:500; font-size:15px; border:1px solid #0A0A0A;">Apply for funding</a>
+    </div>
+  </section>
+
+<!-- ===== 03 STRATEGY ===== -->
+  <section id="strategy" style="border-top:1px solid #E3E2DC;">
+    <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
+    <div style="max-width:1080px; margin:0 auto; padding:64px 32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:56px; align-items:start;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">Our strategy</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 26px; max-width:18ch;">How we choose what to back.</h2>
+        <p style="font-size:16.5px; color:#0A0A0A; line-height:1.65; max-width:54ch; margin:0 0 18px;">The fund backs early-stage UK companies that qualify for SEIS or EIS — a generalist book of around <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">12</span> companies (no fewer than 10), blending high-growth tech with a minimum of three established, cash-generative businesses that anchor the portfolio.</p>
+        <p style="font-size:16.5px; color:#6B6B66; line-height:1.65; max-width:54ch; margin:0 0 30px;">Every company clears the same double-check: more than half are existing clients of our accountancy practice, so their numbers have already been examined by an accountant, and each company must hold HMRC SEIS/EIS advance assurance before a penny moves. Double Cheque sources and runs the diligence; Sapphire Capital Partners, the fund's FCA-authorised manager, takes every final decision. Because the same team advises the fund and runs the practice that supplies much of the deal flow, this is a related-party arrangement, disclosed in full in the Information Memorandum.</p>
+        <a href="#fund" style="text-decoration:none; border:1px solid #0A0A0A; color:#0A0A0A; padding:13px 25px; font-weight:500; font-size:15px; display:inline-block;">Fund overview</a>
+      </div>
+
+      <!-- ghosted strategy stack -->
+      <div style="border:1px solid #0A0A0A; background:#FFFFFF; padding:clamp(28px,4vw,44px);">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:24px;">Our focus</div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(22px,2.9vw,32px); line-height:1.2; letter-spacing:-0.02em;">
+          <sc-for list="{{ focusLines }}" as="line" hint-placeholder-count="4">
+            <div style="display:flex; align-items:center; gap:0px;">
+              <div style="{{ line.barStyle }}"></div>
+              <div style="{{ line.textStyle }}">{{ line.text }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="border-top:1px solid #E3E2DC; margin-top:28px; padding-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#E3E2DC;">
+          <div style="background:#FFFFFF; padding:14px 4px 6px;"><div style="font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:500;">~12</div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66; margin-top:4px;">companies (min 10)</div></div>
+          <div style="background:#FFFFFF; padding:14px 4px 6px;"><div style="font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:500;">£0</div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66; margin-top:4px;">initial/annual fee to you</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ===== 06 PORTFOLIO ===== -->
+  <section id="portfolio" style="border-top:1px solid #E3E2DC;">
+    <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
+    <div style="max-width:1080px; margin:0 auto; padding:64px 32px 24px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">Portfolio</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0; max-width:20ch;">A few of the companies we back.</h2>
+    </div>
+    <div style="max-width:1080px; margin:0 auto; padding:24px 32px 64px;">
+      <div style="border:1px solid #0A0A0A;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:1px; background:#E3E2DC;">
+          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
+            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><img src="logos/wolf.png" alt="Wolf Escape Games" style="width:150px; height:46px; object-fit:contain; object-position:0% 50%; display:block;" /></div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Consumer · gaming</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">Wolf Escape Games</div>
+            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">Award-winning online escape rooms, played in any browser. Featured in the national press.</div>
+            <a href="https://wolfescapegames.com" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">wolfescapegames.com →</a>
+          </div>
+          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
+            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><img src="logos/stackt.svg" alt="Stackt" style="width:150px; height:46px; object-fit:contain; object-position:0% 50%; display:block;" /></div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Logistics · prop-tech</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">Stackt</div>
+            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">On-demand moving and storage for London, booked and managed entirely online.</div>
+            <a href="https://www.stackt.co.uk" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">stackt.co.uk →</a>
+          </div>
+          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
+            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><img src="logos/notbet.svg" alt="NotBet" style="width:150px; height:46px; object-fit:contain; object-position:0% 50%; display:block;" /></div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Consumer · mobile</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">NotBet</div>
+            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">A free-to-play prediction game: call real-world outcomes, with nothing staked.</div>
+            <a href="https://notbet.com/en" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">notbet.com →</a>
+          </div>
+          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
+            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><img src="logos/golborne.png" alt="Golborne Fine Wine Deli" style="width:150px; height:46px; object-fit:contain; object-position:0% 50%; display:block;" /></div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Food &amp; drink · retail</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">Golborne Fine Wine Deli</div>
+            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">An independent fine-wine merchant and deli in west London.</div>
+            <a href="https://golbornefinewinedeli.com" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">golbornefinewinedeli.com →</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -98,11 +172,6 @@
               <td style="padding:15px 20px; font-family:'Inter',sans-serif; color:#6B6B66;">Company age</td>
               <td style="padding:15px 20px;">under 3 years</td>
               <td style="padding:15px 20px;">under 7 years</td>
-            </tr>
-            <tr style="border-bottom:1px solid #E3E2DC;">
-              <td style="padding:15px 20px; font-family:'Inter',sans-serif; color:#6B6B66;">Gross assets</td>
-              <td style="padding:15px 20px;">under £350k</td>
-              <td style="padding:15px 20px;">under £30m</td>
             </tr>
             <tr style="border-bottom:1px solid #E3E2DC;">
               <td style="padding:15px 20px; font-family:'Inter',sans-serif; color:#6B6B66;">Company can raise</td>
@@ -310,36 +379,7 @@
     </div>
   </section>
 
-  <!-- ===== 03 STRATEGY ===== -->
-  <section id="strategy" style="border-top:1px solid #E3E2DC;">
-    <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
-    <div style="max-width:1080px; margin:0 auto; padding:64px 32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:56px; align-items:start;">
-      <div>
-        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">Our strategy</div>
-        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 26px; max-width:18ch;">How we choose what to back.</h2>
-        <p style="font-size:16.5px; color:#0A0A0A; line-height:1.65; max-width:54ch; margin:0 0 18px;">The fund backs early-stage UK companies that qualify for SEIS or EIS — a generalist book of around <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">12</span> companies (no fewer than 10), blending high-growth tech with a minimum of three established, cash-generative businesses that anchor the portfolio.</p>
-        <p style="font-size:16.5px; color:#6B6B66; line-height:1.65; max-width:54ch; margin:0 0 30px;">Every company clears the same double-check: more than half are existing clients of our accountancy practice, so their numbers have already been examined by an accountant, and each company must hold HMRC SEIS/EIS advance assurance before a penny moves. Double Cheque sources and runs the diligence; Sapphire Capital Partners, the fund's FCA-authorised manager, takes every final decision. Because the same team advises the fund and runs the practice that supplies much of the deal flow, this is a related-party arrangement, disclosed in full in the Information Memorandum.</p>
-        <a href="#fund" style="text-decoration:none; border:1px solid #0A0A0A; color:#0A0A0A; padding:13px 25px; font-weight:500; font-size:15px; display:inline-block;">Fund overview</a>
-      </div>
-
-      <!-- ghosted strategy stack -->
-      <div style="border:1px solid #0A0A0A; background:#FFFFFF; padding:clamp(28px,4vw,44px);">
-        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:24px;">Our focus</div>
-        <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(22px,2.9vw,32px); line-height:1.2; letter-spacing:-0.02em;">
-          <sc-for list="{{ focusLines }}" as="line" hint-placeholder-count="4">
-            <div style="display:flex; align-items:center; gap:0px;">
-              <div style="{{ line.barStyle }}"></div>
-              <div style="{{ line.textStyle }}">{{ line.text }}</div>
-            </div>
-          </sc-for>
-        </div>
-        <div style="border-top:1px solid #E3E2DC; margin-top:28px; padding-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#E3E2DC;">
-          <div style="background:#FFFFFF; padding:14px 4px 6px;"><div style="font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:500;">~12</div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66; margin-top:4px;">companies (min 10)</div></div>
-          <div style="background:#FFFFFF; padding:14px 4px 6px;"><div style="font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:500;">£0</div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66; margin-top:4px;">initial/annual fee to you</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ===== 04 THE FUND ===== -->
   <section id="fund" style="border-top:1px solid #E3E2DC;">
@@ -437,48 +477,7 @@
     </div>
   </section>
 
-  <!-- ===== 06 PORTFOLIO ===== -->
-  <section id="portfolio" style="border-top:1px solid #E3E2DC;">
-    <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
-    <div style="max-width:1080px; margin:0 auto; padding:64px 32px 24px;">
-      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">Portfolio</div>
-      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0; max-width:20ch;">A few of the companies we back.</h2>
-    </div>
-    <div style="max-width:1080px; margin:0 auto; padding:24px 32px 64px;">
-      <div style="border:1px solid #0A0A0A;">
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:1px; background:#E3E2DC;">
-          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
-            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><img src="logos/wolf.png" alt="Wolf Escape Games" style="width:150px; height:46px; object-fit:contain; object-position:0% 50%; display:block;" /></div>
-            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Consumer · gaming</div>
-            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">Wolf Escape Games</div>
-            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">Award-winning online escape rooms, played in any browser. Featured in the national press.</div>
-            <a href="https://wolfescapegames.com" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">wolfescapegames.com →</a>
-          </div>
-          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
-            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><img src="logos/stackt.svg" alt="Stackt" style="width:150px; height:46px; object-fit:contain; object-position:0% 50%; display:block;" /></div>
-            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Logistics · prop-tech</div>
-            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">Stackt</div>
-            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">On-demand moving and storage for London, booked and managed entirely online.</div>
-            <a href="https://www.stackt.co.uk" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">stackt.co.uk →</a>
-          </div>
-          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
-            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><img src="logos/notbet.svg" alt="NotBet" style="width:150px; height:46px; object-fit:contain; object-position:0% 50%; display:block;" /></div>
-            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Consumer · mobile</div>
-            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">NotBet</div>
-            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">A free-to-play prediction game: call real-world outcomes, with nothing staked.</div>
-            <a href="https://notbet.com/en" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">notbet.com →</a>
-          </div>
-          <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
-            <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><img src="logos/golborne.png" alt="Golborne Fine Wine Deli" style="width:150px; height:46px; object-fit:contain; object-position:0% 50%; display:block;" /></div>
-            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Food &amp; drink · retail</div>
-            <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; letter-spacing:-0.01em;">Golborne Fine Wine Deli</div>
-            <div style="font-size:14px; color:#6B6B66; line-height:1.55;">An independent fine-wine merchant and deli in west London.</div>
-            <a href="https://golbornefinewinedeli.com" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:auto; text-decoration:none; color:#0A0A0A;" style-hover="color:#6B6B66;">golbornefinewinedeli.com →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ===== FOUNDERS ===== -->
   <section id="founders" style="border-top:1px solid #E3E2DC;">
