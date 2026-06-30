@@ -18,6 +18,9 @@
   body{ background:#F7F6F2; }
   ::selection{ background:#0A0A0A; color:#F7F6F2; }
   a{ color:inherit; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  section[id]{ scroll-margin-top:90px; }
   @keyframes dc-fade{ from{opacity:0} to{opacity:1} }
   input[type=range]{ -webkit-appearance:none; appearance:none; background:transparent; }
   input[type=range]::-webkit-slider-runnable-track{ height:2px; background:#0A0A0A; }
@@ -73,7 +76,7 @@
   <section id="how" style="border-top:1px solid #E3E2DC;">
     <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
     <div style="max-width:1180px; margin:0 auto; padding:64px 32px 24px;">
-      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">01 / How it works</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">How it works</div>
       <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0; max-width:20ch;">Two schemes, one principle: the state shares your risk.</h2>
     </div>
 
@@ -187,7 +190,7 @@
     <div style="max-width:1180px; margin:0 auto; padding:64px 32px;">
       <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:36px;">
         <div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">02 / The reliefs in full</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">The reliefs in full</div>
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0;">Why {{ whyScheme }}.</h2>
         </div>
         <div style="display:flex; border:1px solid #0A0A0A;">
@@ -268,7 +271,7 @@
   <section id="calculator" style="border-top:1px solid #E3E2DC; background:#FFFFFF;">
     <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
     <div style="max-width:1180px; margin:0 auto; padding:64px 32px;">
-      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">03 / Tax-relief calculator</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">Tax-relief calculator</div>
       <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 36px; max-width:22ch;">See your real cost and worst case.</h2>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:40px; align-items:start;">
@@ -337,7 +340,7 @@
     <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
     <div style="max-width:1180px; margin:0 auto; padding:64px 32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:56px; align-items:start;">
       <div>
-        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">04 / Our strategy</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">Our strategy</div>
         <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 26px; max-width:18ch;">How we choose what to back.</h2>
         <p style="font-size:16.5px; color:#0A0A0A; line-height:1.65; max-width:54ch; margin:0 0 18px;">The fund backs UK pre-seed and seed companies that qualify for SEIS or EIS: operator-led teams, a defined buyer, and software that grows on recurring revenue. We hold a concentrated book of <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">8–12</span> companies rather than spreading capital thin.</p>
         <p style="font-size:16.5px; color:#6B6B66; line-height:1.65; max-width:54ch; margin:0 0 30px;">Every company clears the same double-check: financials, legals and HMRC advance assurance, confirmed before a penny is committed. We never charge the companies we back, keeping cap tables clean. Investors get plain terms and a written update every quarter, holdings and valuations included.</p>
@@ -347,7 +350,7 @@
       <!-- ghosted strategy stack -->
       <div style="border:1px solid #0A0A0A; background:#FFFFFF; padding:clamp(28px,4vw,44px);">
         <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:24px;">Our focus</div>
-        <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(30px,3.8vw,50px); line-height:1.12; letter-spacing:-0.025em;">
+        <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(22px,2.9vw,32px); line-height:1.2; letter-spacing:-0.02em;">
           <sc-for list="{{ focusLines }}" as="line" hint-placeholder-count="4">
             <div style="display:flex; align-items:center; gap:0px;">
               <div style="{{ line.barStyle }}"></div>
@@ -367,7 +370,7 @@
   <section id="fund" style="border-top:1px solid #E3E2DC;">
     <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
     <div style="max-width:1180px; margin:0 auto; padding:64px 32px 24px;">
-      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">05 / The fund</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">The fund</div>
       <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0; max-width:20ch;">The DoubleCheque SEIS &amp; EIS Fund.</h2>
     </div>
 
@@ -458,7 +461,7 @@
   <section id="portfolio" style="border-top:1px solid #E3E2DC;">
     <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
     <div style="max-width:1180px; margin:0 auto; padding:64px 32px 24px;">
-      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">06 / Portfolio</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">Portfolio</div>
       <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(28px,3.6vw,42px); line-height:1.08; letter-spacing:-0.02em; margin:0; max-width:20ch;">A few of the companies we back.</h2>
     </div>
     <div style="max-width:1180px; margin:0 auto; padding:24px 32px 64px;">
@@ -503,7 +506,7 @@
     <div data-reveal style="height:1px; background:#0A0A0A; transform-origin:left center;"></div>
     <div style="max-width:1180px; margin:0 auto; padding:64px 32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:48px; align-items:start;">
       <div>
-        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">07 / Founders</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:14px;">Founders</div>
         <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(26px,3.2vw,38px); line-height:1.1; letter-spacing:-0.02em; margin:0 0 14px; max-width:18ch;">Raising your first round?</h2>
         <p style="font-size:16.5px; color:#6B6B66; line-height:1.6; max-width:48ch; margin:0 0 24px;">We invest in UK companies with SEIS or EIS advance assurance. If your numbers stand up to a double-check, we move quickly.</p>
         <div style="border:1px solid #0A0A0A; background:#FFFFFF; font-size:14.5px;">
@@ -699,6 +702,36 @@
 
 </div>
 </x-dc>
+
+<!-- ===== COOKIE CONSENT ===== -->
+<div id="dc-cookie" role="region" aria-label="Cookie consent" style="display:none; position:fixed; left:0; right:0; bottom:0; z-index:70; background:#F7F6F2; border-top:1px solid #0A0A0A;">
+  <div style="max-width:1180px; margin:0 auto; padding:16px 32px; display:flex; align-items:center; gap:16px 28px; flex-wrap:wrap;">
+    <p style="margin:0; flex:1 1 320px; min-width:240px; font-family:'Inter',sans-serif; font-size:13.5px; line-height:1.55; color:#6B6B66;">We use essential cookies to make this site work. With your consent we'd also set analytics cookies to understand how it is used. <a href="#fund" style="color:#0A0A0A; text-decoration:underline;">Cookie policy</a>.</p>
+    <div style="display:flex; gap:10px; flex:none;">
+      <button type="button" id="dc-cookie-reject" style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; padding:11px 20px; background:#FFFFFF; color:#0A0A0A; border:1px solid #0A0A0A; cursor:pointer;">Reject non-essential</button>
+      <button type="button" id="dc-cookie-accept" style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; padding:11px 20px; background:#0A0A0A; color:#F7F6F2; border:1px solid #0A0A0A; cursor:pointer;">Accept all</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='dc-cookie-consent';
+  var el=document.getElementById('dc-cookie');
+  if(!el) return;
+  var prior=null; try{ prior=localStorage.getItem(KEY); }catch(e){}
+  if(prior){ return; }
+  function riskBar(){ var ds=document.querySelectorAll('div'); for(var i=0;i<ds.length;i++){ var d=ds[i]; if(getComputedStyle(d).position==='fixed' && /Capital at risk/.test(d.textContent||'')) return d; } return null; }
+  function place(){ var rb=riskBar(); el.style.bottom=((rb?rb.offsetHeight:34))+'px'; }
+  function decide(v){ try{ localStorage.setItem(KEY,v); }catch(e){} el.style.display='none'; window.removeEventListener('resize',place); }
+  document.getElementById('dc-cookie-accept').addEventListener('click',function(){ decide('all'); });
+  document.getElementById('dc-cookie-reject').addEventListener('click',function(){ decide('essential'); });
+  window.addEventListener('resize',place);
+  window.addEventListener('load',place);
+  setTimeout(function(){ place(); el.style.display='block'; }, 350);
+  setTimeout(place, 1200);
+})();
+</script>
+
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
 class Component extends DCLogic {
   state = { scheme: 'SEIS', rate: 0.45, amount: 20000, whyScheme: 'SEIS', investorSent: false, founderSent: false, investorModal: false, founderModal: false, focusIdx: 0 };
