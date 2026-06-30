@@ -531,6 +531,7 @@
         <p style="font-size:14.5px; color:#6B6B66; line-height:1.6; margin:0 0 26px;">Open only to investors who qualify as high-net-worth or sophisticated. We will send the Information Memorandum and arrange a call. No money is committed at this stage.</p>
         <sc-if value="{{ investorOpen }}" hint-placeholder-val="{{ true }}">
           <form onSubmit="{{ submitInvestor }}" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px;">
+            <input type="text" name="company_url" data-hp tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;" />
             <div>
               <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Full name</label>
               <input type="text" required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
@@ -569,6 +570,9 @@
               <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Anything we should know (optional)</label>
               <textarea rows="3" style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
             </div>
+            <sc-if value="{{ investorError }}" hint-placeholder-val="{{ false }}">
+              <div style="grid-column:1/-1; font-size:13.5px; color:#A32D2D; line-height:1.5;">Something went wrong sending your application. Please email <a href="mailto:farid@doublecheque.com" style="color:#A32D2D;">farid@doublecheque.com</a> directly.</div>
+            </sc-if>
             <div style="grid-column:1/-1;">
               <button type="submit" style="background:#F2B705; color:#0A0A0A; border:0; padding:14px 30px; font-family:'Inter',sans-serif; font-weight:500; font-size:15px; cursor:pointer;">Apply to invest</button>
             </div>
@@ -600,6 +604,7 @@
         <p style="font-size:14.5px; color:#6B6B66; line-height:1.6; margin:0 0 26px;">For UK companies with SEIS or EIS advance assurance, or eligible for it. We read every submission and reply within ten working days.</p>
         <sc-if value="{{ founderOpen }}" hint-placeholder-val="{{ true }}">
           <form onSubmit="{{ submitFounder }}" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px;">
+            <input type="text" name="company_url" data-hp tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;" />
             <div style="grid-column:1/-1;">
               <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">Company name</label>
               <input type="text" required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box;" />
@@ -654,6 +659,9 @@
               <label style="display:block; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#6B6B66; margin-bottom:8px;">What you do, in one line</label>
               <textarea rows="2" required style="width:100%; border:1px solid #0A0A0A; border-radius:0; background:#FFFFFF; padding:12px 14px; font-family:'Inter',sans-serif; font-size:15px; color:#0A0A0A; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
             </div>
+            <sc-if value="{{ founderError }}" hint-placeholder-val="{{ false }}">
+              <div style="grid-column:1/-1; font-size:13.5px; color:#A32D2D; line-height:1.5;">Something went wrong sending your application. Please email <a href="mailto:farid@doublecheque.com" style="color:#A32D2D;">farid@doublecheque.com</a> directly.</div>
+            </sc-if>
             <div style="grid-column:1/-1;">
               <button type="submit" style="background:#F2B705; color:#0A0A0A; border:0; padding:14px 30px; font-family:'Inter',sans-serif; font-weight:500; font-size:15px; cursor:pointer;">Apply for funding</button>
             </div>
@@ -712,7 +720,34 @@
 
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { scheme: 'SEIS', rate: 0.45, amount: 20000, whyScheme: 'SEIS', investorSent: false, founderSent: false, investorModal: false, founderModal: false, focusIdx: 0 };
+  state = { scheme: 'SEIS', rate: 0.45, amount: 20000, whyScheme: 'SEIS', investorSent: false, founderSent: false, investorError: false, founderError: false, investorModal: false, founderModal: false, focusIdx: 0 };
+
+  endpoint = 'https://doublecheque-forms.vercel.app/api/submit';
+
+  _collect(form, type) {
+    const LM = type === 'founder'
+      ? { 'Company name':'company','First name':'first_name','Second name':'last_name','Email':'email','Website':'website','Stage':'stage','Advance assurance':'advance_assurance','Raising (£)':'raising','MRR (£)':'mrr','Pitch deck':'deck','What you do, in one line':'summary' }
+      : { 'Full name':'name','Email':'email','Investor classification':'classification','Scheme of interest':'scheme','Amount considering (£)':'amount','Phone (optional)':'phone','Anything we should know (optional)':'notes' };
+    const data = { type };
+    form.querySelectorAll('input, select, textarea').forEach((el) => {
+      if (el.type === 'submit' || el.hasAttribute('data-hp')) return;
+      const wrap = el.closest('div');
+      const lab = wrap ? wrap.querySelector('label') : null;
+      const key = lab ? LM[lab.textContent.trim()] : null;
+      if (key) data[key] = el.value;
+    });
+    const hp = form.querySelector('[data-hp]');
+    if (hp) data._gotcha = hp.value;
+    return data;
+  }
+
+  async _post(payload) {
+    try {
+      const r = await fetch(this.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      const j = await r.json().catch(() => ({}));
+      return r.ok && j.ok === true;
+    } catch (e) { return false; }
+  }
 
   openModal(which) {
     if (which === 'investor') this.setState({ investorModal: true, investorSent: false });
@@ -854,8 +889,10 @@ class Component extends DCLogic {
       investorSent: this.state.investorSent,
       founderOpen: !this.state.founderSent,
       founderSent: this.state.founderSent,
-      submitInvestor: (e) => { e.preventDefault(); this.setState({ investorSent: true }); },
-      submitFounder: (e) => { e.preventDefault(); this.setState({ founderSent: true }); },
+      submitInvestor: async (e) => { e.preventDefault(); const d = this._collect(e.target, 'investor'); if (d._gotcha) { this.setState({ investorSent: true }); return; } this.setState({ investorError: false }); const ok = await this._post(d); this.setState(ok ? { investorSent: true } : { investorError: true }); },
+      submitFounder: async (e) => { e.preventDefault(); const d = this._collect(e.target, 'founder'); if (d._gotcha) { this.setState({ founderSent: true }); return; } this.setState({ founderError: false }); const ok = await this._post(d); this.setState(ok ? { founderSent: true } : { founderError: true }); },
+      investorError: this.state.investorError,
+      founderError: this.state.founderError,
       investorModal: this.state.investorModal,
       founderModal: this.state.founderModal,
       openInvestor: (e) => { if (e) e.preventDefault(); this.openModal('investor'); },
