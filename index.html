@@ -48,8 +48,7 @@
         <a href="#strategy" style="text-decoration:none; color:#6B6B66;">Strategy</a>
         <a href="#fund" style="text-decoration:none; color:#6B6B66;">The fund</a>
         <a href="#portfolio" style="text-decoration:none; color:#6B6B66;">Portfolio</a>
-        <a href="#founders" style="text-decoration:none; color:#6B6B66;">Founders</a>
-        <a href="#" onClick="{{ openFounder }}" style="text-decoration:none; background:transparent; color:#0A0A0A; padding:8px 15px; font-weight:500; font-size:14px; border:1px solid #0A0A0A;">For founders</a>
+        <a href="#founders" data-cta style="text-decoration:none; background:transparent; color:#0A0A0A; padding:8px 15px; font-weight:500; font-size:14px; border:1px solid #0A0A0A;">For founders</a>
         <a href="#" onClick="{{ openInvestor }}" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:9px 18px; font-weight:500; font-size:14px;">Invest</a>
       </nav>
     </div>
@@ -62,7 +61,7 @@
     <p style="font-size:clamp(17px,2vw,20px); line-height:1.6; color:#0A0A0A; max-width:62ch; margin:30px 0 0;">Through the government's SEIS and EIS schemes, investors get back up to <span style="font-family:'JetBrains Mono',monospace; font-weight:500;">50%</span> of what they put in as income tax relief, before any growth. Here is exactly how the schemes work, and how little you actually risk.</p>
     <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:40px;">
       <a href="#" onClick="{{ openInvestor }}" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:14px 26px; font-weight:500; font-size:15px;">Invest</a>
-      <a href="#" onClick="{{ openFounder }}" style="text-decoration:none; background:transparent; color:#0A0A0A; padding:13px 25px; font-weight:500; font-size:15px; border:1px solid #0A0A0A;">Apply for funding</a>
+      <a href="#founders" style="text-decoration:none; background:transparent; color:#0A0A0A; padding:13px 25px; font-weight:500; font-size:15px; border:1px solid #0A0A0A;">Apply for funding</a>
       <a href="#how" style="text-decoration:none; color:#0A0A0A; font-weight:500; font-size:15px; padding:13px 6px; border-bottom:1px solid #0A0A0A;">How it works</a>
     </div>
     <!-- verification seal -->
@@ -790,7 +789,7 @@ class Component extends DCLogic {
     }
 
     const navLinks = {};
-    document.querySelectorAll('header nav a[href^="#"]').forEach((a) => {
+    document.querySelectorAll('header nav a[href^="#"]:not([data-cta])').forEach((a) => {
       const id = a.getAttribute('href').slice(1);
       if (id) {
         navLinks[id] = a;
