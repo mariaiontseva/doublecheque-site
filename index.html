@@ -40,6 +40,7 @@
     .dc-main{ padding-bottom:62px !important; }
     .dc-compare{ min-width:0 !important; font-size:12.5px !important; }
     .dc-compare th, .dc-compare td{ padding:11px 10px !important; }
+    .dc-team{ grid-template-columns:1fr !important; gap:20px !important; }
   }
 </style>
 </helmet>
@@ -199,7 +200,7 @@
       <!-- band 3: the team, full width -->
       <div style="margin-top:36px;">
         <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; margin-bottom:16px;">The team</div>
-        <div style="border:1px solid #0A0A0A; background:#FFFFFF; display:grid; grid-template-columns:auto 1fr; gap:28px; padding:24px 24px; align-items:start;">
+        <div class="dc-team" style="border:1px solid #0A0A0A; background:#FFFFFF; display:grid; grid-template-columns:auto 1fr; gap:28px; padding:24px 24px; align-items:start;">
           <div role="img" aria-label="Farid Gasanov" onMouseOver="{{ photoColor }}" onMouseOut="{{ photoGray }}" style="filter:grayscale(1) contrast(1.04); transition:filter 0.4s ease; width:150px; height:178px; flex:none; border:1px solid #0A0A0A; background-image:url('farid-gasanov.jpg'); background-size:150%; background-position:52% 46%; background-repeat:no-repeat;"></div>
           <div>
             <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:20px; letter-spacing:-0.01em;">Farid Gasanov</div>
@@ -230,7 +231,7 @@
     </div>
     <div style="max-width:1080px; margin:0 auto; padding:24px 32px 64px;">
       <div style="border:1px solid #0A0A0A;">
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:1px; background:#E3E2DC;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr)); gap:1px; background:#E3E2DC;">
           <div style="background:#FFFFFF; padding:24px 24px; display:flex; flex-direction:column; gap:12px; min-height:200px;" style-hover="background:#F7F6F2;">
             <div style="height:46px; display:flex; align-items:center; margin-bottom:4px;"><img src="logos/wolf.png" alt="Wolf Escape Games" style="width:150px; height:46px; object-fit:contain; object-position:0% 50%; display:block;" /></div>
             <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B6B66;">Consumer · gaming</div>
