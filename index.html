@@ -59,6 +59,7 @@
         <a href="#how" style="text-decoration:none; color:#6B6B66;">How it works</a>
         <a href="#calculator" style="text-decoration:none; color:#6B6B66;">Calculator</a>
         <a href="#founders" style="text-decoration:none; color:#6B6B66;">For founders</a>
+        <a href="faq.html" style="text-decoration:none; color:#6B6B66;">FAQ</a>
         <a href="#" onClick="{{ openInvestor }}" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:9px 18px; font-weight:500; font-size:14px;">Apply to invest</a>
       </nav>
       <button class="dc-nav-toggle" onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}" style="align-items:center; gap:10px; background:transparent; border:1px solid #0A0A0A; padding:9px 14px; cursor:pointer; font-family:'JetBrains Mono',monospace; font-size:13px; color:#0A0A0A;">
@@ -78,6 +79,7 @@
         <a href="#how" onClick="{{ closeMenu }}" style="display:block; text-decoration:none; color:#0A0A0A; padding:16px 32px; border-bottom:1px solid #E3E2DC; font-size:16px;">How it works</a>
         <a href="#calculator" onClick="{{ closeMenu }}" style="display:block; text-decoration:none; color:#0A0A0A; padding:16px 32px; border-bottom:1px solid #E3E2DC; font-size:16px;">Calculator</a>
         <a href="#founders" onClick="{{ closeMenu }}" style="display:block; text-decoration:none; color:#0A0A0A; padding:16px 32px; border-bottom:1px solid #E3E2DC; font-size:16px;">For founders</a>
+        <a href="faq.html" style="display:block; text-decoration:none; color:#0A0A0A; padding:16px 32px; border-bottom:1px solid #E3E2DC; font-size:16px;">FAQ</a>
         <div style="padding:18px 32px 22px;">
           <a href="#" onClick="{{ openInvestor }}" style="display:block; text-align:center; text-decoration:none; background:#F2B705; color:#0A0A0A; padding:14px 16px; font-weight:500; font-size:15px;">Apply to invest</a>
         </div>
@@ -848,6 +850,13 @@ class Component extends DCLogic {
 
     this._onKey = (e) => { if (e.key === 'Escape') this.closeModals(); };
     document.addEventListener('keydown', this._onKey);
+
+    // Deep-link from other pages (e.g. faq.html): #apply → investor modal, #docs → documents modal.
+    try {
+      const h = (window.location.hash || '').replace('#', '');
+      if (h === 'apply') this.openModal('investor');
+      else if (h === 'docs') this.openModal('docs');
+    } catch (e) {}
 
     if (!reduce) {
       this._focusTimer = setInterval(() => {

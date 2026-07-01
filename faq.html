@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — DoubleCheque</title>
+<meta name="description" content="Frequently asked questions about the DoubleCheque SEIS/EIS fund — the tax schemes, how investing works, fees, founders and portfolio companies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{ background:#F7F6F2; color:#0A0A0A; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; line-height:1.5; }
+  ::selection{ background:#0A0A0A; color:#F7F6F2; }
+  a{ color:inherit; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  a:focus-visible, button:focus-visible, summary:focus-visible{ outline:2px solid #1A7A4C; outline-offset:3px; }
+
+  .dc-main{ padding-bottom:52px; }
+
+  /* nav */
+  .dc-nav-toggle{ display:none; }
+  .dc-mobile-panel{ display:none; }
+  .dc-mobile-panel.open{ display:block; }
+  @media (max-width:1024px){
+    .dc-nav-desktop{ display:none !important; }
+    .dc-nav-toggle{ display:inline-flex !important; }
+  }
+
+  /* accordion */
+  details.dc-q{ border-bottom:1px solid #E3E2DC; }
+  details.dc-q > summary{ list-style:none; cursor:pointer; display:flex; align-items:flex-start; justify-content:space-between; gap:20px; padding:22px 4px; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:18px; letter-spacing:-0.01em; line-height:1.35; }
+  details.dc-q > summary::-webkit-details-marker{ display:none; }
+  details.dc-q > summary:hover{ color:#000; }
+  details.dc-q .dc-chev{ flex:none; font-family:'JetBrains Mono',monospace; font-size:16px; color:#6B6B66; transition:transform 0.2s ease; margin-top:2px; }
+  details.dc-q[open] .dc-chev{ transform:rotate(45deg); }
+  details.dc-q .dc-a{ padding:0 4px 24px; max-width:70ch; }
+  details.dc-q .dc-a p{ font-size:15px; color:#3A3A36; line-height:1.7; margin:0 0 12px; }
+  details.dc-q .dc-a p:last-child{ margin-bottom:0; }
+  details.dc-q .dc-a a{ color:#0A0A0A; text-decoration:underline; text-underline-offset:2px; }
+
+  .dc-riskbar{ position:fixed; left:0; right:0; bottom:0; z-index:60; background:#0A0A0A; color:#F7F6F2; border-top:1px solid #0A0A0A; padding:8px 32px; font-size:11.5px; font-family:'JetBrains Mono',monospace; letter-spacing:0.01em; text-align:center; line-height:1.4; }
+
+  @media (max-width:600px){
+    .dc-riskbar{ font-size:10px !important; padding:7px 14px !important; line-height:1.45 !important; }
+    .dc-main{ padding-bottom:72px !important; }
+    details.dc-q > summary{ font-size:16.5px; }
+  }
+</style>
+</head>
+<body>
+<div class="dc-main">
+
+  <!-- ===== NAV ===== -->
+  <header style="position:sticky; top:0; z-index:50; background:rgba(247,246,242,0.92); backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid #E3E2DC;">
+    <div style="max-width:1080px; margin:0 auto; padding:16px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+      <a href="index.html" style="display:flex; align-items:baseline; gap:9px; text-decoration:none; font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:500; letter-spacing:-0.01em;">
+        <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.18em; font-weight:500;">✓✓</span>
+        <span>DoubleCheque</span>
+      </a>
+      <nav class="dc-nav-desktop" style="display:flex; align-items:center; gap:28px; font-size:14.5px;">
+        <a href="index.html#strategy" style="text-decoration:none; color:#6B6B66;">Strategy</a>
+        <a href="index.html#portfolio" style="text-decoration:none; color:#6B6B66;">Portfolio</a>
+        <a href="index.html#how" style="text-decoration:none; color:#6B6B66;">How it works</a>
+        <a href="index.html#calculator" style="text-decoration:none; color:#6B6B66;">Calculator</a>
+        <a href="index.html#founders" style="text-decoration:none; color:#6B6B66;">For founders</a>
+        <a href="faq.html" style="text-decoration:none; color:#0A0A0A; font-weight:500;">FAQ</a>
+        <a href="index.html#apply" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:9px 18px; font-weight:500; font-size:14px;">Apply to invest</a>
+      </nav>
+      <button class="dc-nav-toggle" id="dcMenuBtn" aria-label="Menu" aria-expanded="false" style="align-items:center; gap:10px; background:transparent; border:1px solid #0A0A0A; padding:9px 14px; cursor:pointer; font-family:'JetBrains Mono',monospace; font-size:13px; color:#0A0A0A;">
+        <span style="display:inline-flex; flex-direction:column; gap:3px; width:16px;">
+          <span style="height:1.5px; background:#0A0A0A; display:block;"></span>
+          <span style="height:1.5px; background:#0A0A0A; display:block;"></span>
+          <span style="height:1.5px; background:#0A0A0A; display:block;"></span>
+        </span>
+        <span id="dcMenuLabel">Menu</span>
+      </button>
+    </div>
+    <!-- mobile menu panel -->
+    <nav class="dc-mobile-panel" id="dcMobilePanel" style="border-top:1px solid #E3E2DC; background:#F7F6F2;">
+      <a href="index.html#strategy" style="display:block; text-decoration:none; color:#0A0A0A; padding:16px 32px; border-bottom:1px solid #E3E2DC; font-size:16px;">Strategy</a>
+      <a href="index.html#portfolio" style="display:block; text-decoration:none; color:#0A0A0A; padding:16px 32px; border-bottom:1px solid #E3E2DC; font-size:16px;">Portfolio</a>
+      <a href="index.html#how" style="display:block; text-decoration:none; color:#0A0A0A; padding:16px 32px; border-bottom:1px solid #E3E2DC; font-size:16px;">How it works</a>
+      <a href="index.html#calculator" style="display:block; text-decoration:none; color:#0A0A0A; padding:16px 32px; border-bottom:1px solid #E3E2DC; font-size:16px;">Calculator</a>
+      <a href="index.html#founders" style="display:block; text-decoration:none; color:#0A0A0A; padding:16px 32px; border-bottom:1px solid #E3E2DC; font-size:16px;">For founders</a>
+      <a href="faq.html" style="display:block; text-decoration:none; color:#0A0A0A; font-weight:500; padding:16px 32px; border-bottom:1px solid #E3E2DC; font-size:16px;">FAQ</a>
+      <div style="padding:18px 32px 22px;">
+        <a href="index.html#apply" style="display:block; text-align:center; text-decoration:none; background:#F2B705; color:#0A0A0A; padding:14px 16px; font-weight:500; font-size:15px;">Apply to invest</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section style="max-width:1080px; margin:0 auto; padding:76px 32px 40px;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; letter-spacing:0.02em; margin-bottom:26px;">Help &amp; answers</div>
+    <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(30px,4.4vw,48px); line-height:1.2; letter-spacing:-0.025em; margin:0; max-width:20ch;">Frequently asked questions</h1>
+    <p style="font-size:clamp(16px,2vw,19px); line-height:1.6; color:#0A0A0A; max-width:60ch; margin:24px 0 0;">The fund, the tax schemes and how investing works — in plain terms. Anything not covered here, email <a href="mailto:farid@doublecheque.com" style="color:#0A0A0A; text-decoration:underline; text-underline-offset:2px;">farid@doublecheque.com</a>.</p>
+  </section>
+
+  <!-- ===== FAQ BODY ===== -->
+  <div style="max-width:820px; margin:0 auto; padding:8px 32px 8px;">
+
+    <!-- About the fund -->
+    <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; letter-spacing:0.02em; margin:36px 0 6px;">About the fund</div>
+    <div style="border-top:1px solid #0A0A0A;">
+      <details class="dc-q">
+        <summary>What is DoubleCheque?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>DoubleCheque is a fund that helps back the next wave of British startups through SEIS and EIS. Every company is hand-picked and runs the full diligence gauntlet before a penny moves. Sapphire Capital Partners LLP, the fund's FCA-authorised manager, takes every final investment decision.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>What does the fund invest in?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>UK early-stage companies, on a generalist basis — the fund is not tied to a single sector. Each cohort targets a portfolio of around 12 holdings.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>What makes DoubleCheque different?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>Every company clears the same double-check. More than half are existing clients of our sister accountancy practice, so their numbers have already been examined by an accountant. On top of that, each company must hold HMRC SEIS/EIS advance assurance before any money moves.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>Who makes the investment decisions?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>Double Cheque sources each opportunity and runs the diligence. Sapphire Capital Partners, the fund's FCA-authorised manager, takes every final decision. Because the same team advises the fund and runs the practice that supplies much of the deal flow, this is a related-party arrangement — disclosed in full in the Information Memorandum.</p></div>
+      </details>
+    </div>
+
+    <!-- SEIS & EIS -->
+    <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; letter-spacing:0.02em; margin:44px 0 6px;">SEIS &amp; EIS</div>
+    <div style="border-top:1px solid #0A0A0A;">
+      <details class="dc-q">
+        <summary>What are SEIS and EIS?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>They are two UK government schemes designed to encourage investment into early-stage companies. In return for the risk of backing young businesses, investors can claim generous tax reliefs — up to 50% income tax relief under SEIS and 30% under EIS — plus further reliefs on gains and losses.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>What tax reliefs could I receive?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>Depending on your circumstances, SEIS and EIS can offer up-front income tax relief (up to 50% SEIS / 30% EIS), tax-free growth if shares are held for at least three years, capital gains reliefs, and loss relief if a company fails.</p><p>Reliefs depend on your individual circumstances and on the companies keeping their qualifying status, and the rules can change. This is not tax advice — please take your own.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>When do I need to invest to claim relief for a tax year?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>The fund is evergreen, so you can apply at any time. Invest before 6 April 2027 to set reliefs against the 2025/26 or 2026/27 tax years. Capital is at risk.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>Is my capital at risk?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>Yes. This is a high-risk, long-term investment. Investing in early-stage companies puts your capital at risk and you may lose all of it. These investments are illiquid and hard to sell. Only invest money you can afford to lose.</p></div>
+      </details>
+    </div>
+
+    <!-- Investing -->
+    <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; letter-spacing:0.02em; margin:44px 0 6px;">Investing</div>
+    <div style="border-top:1px solid #0A0A0A;">
+      <details class="dc-q">
+        <summary>Who can invest?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>The fund is open only to investors who qualify as high-net-worth or sophisticated. You will be asked to confirm your classification as part of applying.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>What is the minimum investment?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>The minimum subscription is £25,000.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>What return does the fund target?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>The fund targets a return of 3–5×. This is gross of fees and before any SEIS/EIS tax reliefs; net returns will be lower. It is a target, not a forecast or a guarantee of future returns — capital is at risk and you may get back less than you invest.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>What are the fees?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>The fund's charges are set out in full in the Information Memorandum and Key Information Document. <a href="index.html#docs">Request the documents</a> and we'll send them to you.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>How do I get the Information Memorandum &amp; KID?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>Leave your email under <a href="index.html#docs">Download the documents</a> on the home page and we'll send you the Information Memorandum and Key Information Document. No call, no commitment.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>How do I apply to invest?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>Use <a href="index.html#apply">Apply to invest</a> to register your interest. We'll send the Information Memorandum and arrange a call. No money is committed at that stage.</p></div>
+      </details>
+    </div>
+
+    <!-- For founders -->
+    <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; letter-spacing:0.02em; margin:44px 0 6px;">For founders</div>
+    <div style="border-top:1px solid #0A0A0A;">
+      <details class="dc-q">
+        <summary>My company is raising — can DoubleCheque invest?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>We back UK companies that hold SEIS or EIS advance assurance, or are eligible for it. Send us your company through <a href="index.html#founders">For founders</a> — we read every submission and reply within ten working days.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>Do you help fill the rest of the round?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>Yes. Alongside investing, we can make introductions to our investor network, handle SEIS/EIS advance assurance and paperwork, and co-ordinate the raise through to close. The success fee is paid only when the round closes.</p></div>
+      </details>
+    </div>
+
+    <!-- Portfolio companies & legal -->
+    <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66; letter-spacing:0.02em; margin:44px 0 6px;">Portfolio companies &amp; legal</div>
+    <div style="border-top:1px solid #0A0A0A;">
+      <details class="dc-q">
+        <summary>I'm a portfolio company — how do I log in?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>Use the <a href="https://doublecheque-portal.vercel.app">Portfolio company login</a> link in the footer. Access is invite-only: you sign in with a magic link sent to your registered email — no password to remember.</p></div>
+      </details>
+      <details class="dc-q">
+        <summary>Who is DoubleCheque, and who approves this promotion?<span class="dc-chev">+</span></summary>
+        <div class="dc-a"><p>DoubleCheque is a trading name of Double Cheque Ltd (registered in England &amp; Wales, company number 17167808), an Appointed Representative of Palace Ventures Limited (FCA FRN 433291). This financial promotion has been approved by Sapphire Capital Partners LLP (FCA FRN 565716), the fund's manager. The fund is an unapproved Alternative Investment Fund and is not an HMRC-approved fund.</p></div>
+      </details>
+    </div>
+
+    <!-- CTA band -->
+    <div style="border:1px solid #0A0A0A; background:#FFFFFF; padding:30px 30px; margin:52px 0 8px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px;">
+      <div style="max-width:44ch;">
+        <div style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:20px; letter-spacing:-0.015em; margin-bottom:6px;">Still have a question?</div>
+        <div style="font-size:14.5px; color:#6B6B66; line-height:1.6;">Read the full Information Memorandum, or email <a href="mailto:farid@doublecheque.com" style="color:#0A0A0A;">farid@doublecheque.com</a>.</div>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="index.html#docs" style="text-decoration:none; border:1px solid #0A0A0A; color:#0A0A0A; padding:13px 24px; font-weight:500; font-size:15px;">Download the documents</a>
+        <a href="index.html#apply" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:13px 24px; font-weight:500; font-size:15px;">Apply to invest</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="border-top:1px solid #0A0A0A; background:#F7F6F2; margin-top:56px;">
+    <div style="max-width:1080px; margin:0 auto; padding:48px 32px 40px;">
+      <div style="display:flex; align-items:baseline; gap:9px; font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:500; letter-spacing:-0.01em; margin-bottom:24px;">
+        <span style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.18em;">✓✓</span>
+        <span>DoubleCheque</span>
+      </div>
+      <p style="font-size:13px; color:#6B6B66; line-height:1.7; max-width:90ch; margin:0 0 16px;"><span style="color:#0A0A0A; font-weight:500;">Risk warning.</span> Don't invest unless you're prepared to lose all the money you invest — this is a high-risk investment and you are unlikely to be protected if something goes wrong. Investing in early-stage companies through SEIS and EIS puts your capital at risk and you may lose all of it. These investments are illiquid and hard to sell. Tax reliefs depend on your individual circumstances, on the companies maintaining their qualifying status, and may change. Past performance is not a guide to the future. This is a high-risk, long-term investment. Only invest money you can afford to lose. Illustrative only. Not tax advice.</p>
+      <p style="font-size:13px; color:#6B6B66; line-height:1.7; max-width:90ch; margin:0 0 28px;">This financial promotion has been approved by Sapphire Capital Partners LLP (FCA FRN 565716), the fund's manager, on 1 July 2026. DoubleCheque is a trading name of Double Cheque Ltd (registered in England &amp; Wales, company number 17167808; registered office 411 Office 1.01, Oxford Street, London W1C 2PE), an Appointed Representative of Palace Ventures Limited (FCA FRN 433291). This website is directed only at investors who qualify as high-net-worth or sophisticated. The fund is an unapproved Alternative Investment Fund and is not an HMRC-approved fund.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:24px; font-size:13.5px; border-top:1px solid #E3E2DC; padding-top:24px;">
+        <a href="index.html" style="text-decoration:none; color:#0A0A0A;">Home</a>
+        <a href="index.html#fund" style="text-decoration:none; color:#0A0A0A;">Terms</a>
+        <a href="index.html#fund" style="text-decoration:none; color:#0A0A0A;">Privacy</a>
+        <a href="index.html#fund" style="text-decoration:none; color:#0A0A0A;">Cookies</a>
+        <a href="index.html#fund" style="text-decoration:none; color:#0A0A0A;">Complaints</a>
+        <a href="https://doublecheque-portal.vercel.app" style="text-decoration:none; color:#0A0A0A;">Portfolio company login&nbsp;→</a>
+        <span style="margin-left:auto; color:#6B6B66; font-family:'JetBrains Mono',monospace;">© 2026 Double Cheque Ltd</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="dc-riskbar">
+    Capital at risk · You may lose all your investment · Tax reliefs depend on circumstances and may change · Not tax advice
+  </div>
+
+</div>
+
+<script>
+  // Mobile menu toggle
+  (function(){
+    var btn = document.getElementById('dcMenuBtn');
+    var panel = document.getElementById('dcMobilePanel');
+    var label = document.getElementById('dcMenuLabel');
+    if (btn && panel) {
+      btn.addEventListener('click', function(){
+        var open = panel.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (label) label.textContent = open ? 'Close' : 'Menu';
+      });
+    }
+    // Accordion: open one at a time
+    var items = document.querySelectorAll('details.dc-q');
+    items.forEach(function(d){
+      d.addEventListener('toggle', function(){
+        if (d.open) items.forEach(function(o){ if (o !== d) o.open = false; });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
