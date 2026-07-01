@@ -608,7 +608,7 @@
   <!-- ===== DOCUMENTS MODAL (light, email-only) ===== -->
   <sc-if value="{{ docsModal }}" hint-placeholder-val="{{ false }}">
     <div role="dialog" aria-modal="true" aria-label="Download the documents" onClick="{{ closeModals }}" style="position:fixed; inset:0; z-index:100; background:rgba(10,10,10,0.55); display:flex; align-items:flex-start; justify-content:center; padding:5vh 18px; overflow-y:auto; animation:dc-fade 0.15s ease;">
-      <div onClick="{{ stopProp }}" style="background:#F7F6F2; border:1px solid #0A0A0A; max-width:520px; width:100%; margin:auto; padding:32px 30px 34px;">
+      <div onClick="{{ stopProp }}" style="background:#F7F6F2; border:1px solid #0A0A0A; max-width:420px; width:100%; margin:auto; padding:32px 30px 34px;">
         <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
           <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#6B6B66;">Documents</div>
           <button onClick="{{ closeModals }}" aria-label="Close" style="background:transparent; border:0; font-size:26px; line-height:1; color:#0A0A0A; cursor:pointer; padding:0 2px;">×</button>
