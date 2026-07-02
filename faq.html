@@ -45,6 +45,9 @@
   .dc-nav-toggle{ display:none; }
   .dc-mobile-panel{ display:none; }
   .dc-mobile-panel.open{ display:block; }
+  .dc-nav-desktop a{ padding-bottom:3px; border-bottom:2px solid transparent; transition:border-color 0.2s ease; }
+  .dc-nav-desktop a.dc-cta{ padding-bottom:0; border-bottom:0; }
+  .dc-nav-desktop a.dc-active{ border-bottom-color:#0A0A0A; }
   @media (max-width:1024px){
     .dc-nav-desktop{ display:none !important; }
     .dc-nav-toggle{ display:inline-flex !important; }
@@ -91,8 +94,8 @@
         <a href="index.html#how" style="text-decoration:none; color:#6B6B66;">How it works</a>
         <a href="index.html#calculator" style="text-decoration:none; color:#6B6B66;">Calculator</a>
         <a href="index.html#founders" style="text-decoration:none; color:#6B6B66;">For founders</a>
-        <a href="faq.html" style="text-decoration:none; color:#0A0A0A; font-weight:500;">FAQ</a>
-        <a href="index.html#apply" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:9px 18px; font-weight:500; font-size:14px;">Apply to invest</a>
+        <a href="faq.html" class="dc-active" style="text-decoration:none; color:#0A0A0A; font-weight:500;">FAQ</a>
+        <a href="index.html#apply" class="dc-cta" style="text-decoration:none; background:#F2B705; color:#0A0A0A; padding:9px 18px; font-weight:500; font-size:14px;">Apply to invest</a>
       </nav>
       <button class="dc-nav-toggle" id="dcMenuBtn" aria-label="Menu" aria-expanded="false" style="align-items:center; gap:10px; background:transparent; border:1px solid #0A0A0A; padding:9px 14px; cursor:pointer; font-family:'JetBrains Mono',monospace; font-size:13px; color:#0A0A0A;">
         <span style="display:inline-flex; flex-direction:column; gap:3px; width:16px;">
