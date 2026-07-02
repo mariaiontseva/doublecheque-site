@@ -945,7 +945,7 @@ class Component extends DCLogic {
       wLossRelief: pct(lossRelief),
       wRealLoss: pct(realLoss),
 
-      focusLines: ['Numbers pre-checked', 'Operator-led', 'Generalist book', 'Regulated manager'].map((t, i) => ({
+      focusLines: ['Accountant-checked deal flow', 'Operator-led', 'Generalist book', 'Regulated manager'].map((t, i) => ({
         text: t,
         textStyle: 'transition:color 0.55s ease; color:' + (i === this.state.focusIdx ? '#0A0A0A' : '#E3E2DC') + ';',
         barStyle: 'flex:none; height:0.42em; background:#F2B705; transition:width 0.5s cubic-bezier(0.22,1,0.36,1), margin-right 0.5s cubic-bezier(0.22,1,0.36,1); width:' + (i === this.state.focusIdx ? '22px' : '0px') + '; margin-right:' + (i === this.state.focusIdx ? '14px' : '0px') + ';',
