@@ -787,15 +787,10 @@
   if(!el) return;
   var prior=null; try{ prior=localStorage.getItem(KEY); }catch(e){}
   if(prior){ return; }
-  function riskBar(){ var ds=document.querySelectorAll('div'); for(var i=0;i<ds.length;i++){ var d=ds[i]; if(getComputedStyle(d).position==='fixed' && /Capital at risk/.test(d.textContent||'')) return d; } return null; }
-  function place(){ var rb=riskBar(); el.style.bottom=((rb?rb.offsetHeight:34))+'px'; }
-  function decide(v){ try{ localStorage.setItem(KEY,v); }catch(e){} el.style.display='none'; window.removeEventListener('resize',place); }
+  function decide(v){ try{ localStorage.setItem(KEY,v); }catch(e){} el.style.display='none'; }
   document.getElementById('dc-cookie-accept').addEventListener('click',function(){ decide('all'); });
   document.getElementById('dc-cookie-reject').addEventListener('click',function(){ decide('essential'); });
-  window.addEventListener('resize',place);
-  window.addEventListener('load',place);
-  setTimeout(function(){ place(); el.style.display='block'; }, 350);
-  setTimeout(place, 1200);
+  setTimeout(function(){ el.style.display='block'; }, 350);
 })();
 </script>
 
