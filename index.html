@@ -886,11 +886,21 @@ class Component extends DCLogic {
     this._onKey = (e) => { if (e.key === 'Escape') this.closeModals(); };
     document.addEventListener('keydown', this._onKey);
 
-    // Deep-link from other pages (e.g. faq.html): #apply → investor modal, #docs → documents modal.
+    // Deep-link from other pages (e.g. faq.html): #apply → investor modal, #docs → documents modal,
+    // #section → scroll to it (native hash jump misses because content is JS-rendered).
     try {
       const h = (window.location.hash || '').replace('#', '');
       if (h === 'apply') this.openModal('investor');
       else if (h === 'docs') this.openModal('docs');
+      else if (h) {
+        // Content is JS-rendered, so retry until the section exists, then scroll (twice, to
+        // survive late layout shifts from images/fonts loading).
+        let tries = 0;
+        const doScroll = () => { const t = document.getElementById(h); if (t) { t.scrollIntoView({ behavior: 'auto', block: 'start' }); return true; } return false; };
+        const attempt = () => { if (doScroll()) { setTimeout(doScroll, 250); setTimeout(doScroll, 700); return; } if (tries++ < 60) setTimeout(attempt, 60); };
+        attempt();
+        window.addEventListener('load', doScroll, { once: true });
+      }
     } catch (e) {}
 
     if (!reduce) {
