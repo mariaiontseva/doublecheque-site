@@ -94,7 +94,7 @@
     <div style="color:#1A7A4C; font-family:'JetBrains Mono',monospace; letter-spacing:-0.18em; font-size:30px; font-weight:700; line-height:1;">&#10003;&#10003;</div>
     <div style="font-family:'Space Grotesk',Arial,sans-serif; font-size:22px; font-weight:600; margin:12px 0 26px;">DoubleCheque</div>
     <form id="dc-gate-form" autocomplete="off">
-      <input id="dc-gate-input" type="password" placeholder="Password" aria-label="Password" style="width:100%; padding:13px 14px; border:1px solid #F7F6F2; border-radius:0; background:transparent; color:#F7F6F2; font-size:15px; outline:none; box-sizing:border-box;" />
+      <input id="dc-gate-input" type="password" placeholder="Password" aria-label="Password" style="width:100%; padding:13px 14px; border:1px solid #F7F6F2; border-radius:0; background:transparent; color:#F7F6F2; font-size:16px; outline:none; box-sizing:border-box;" />
       <button type="submit" style="width:100%; margin-top:12px; padding:13px; border:0; background:#F2B705; color:#0A0A0A; font-family:'Inter',Arial,sans-serif; font-weight:600; font-size:15px; cursor:pointer;">Enter</button>
       <div id="dc-gate-err" style="min-height:18px; margin-top:12px; font-size:13px; color:#E7A; visibility:hidden;">Incorrect password</div>
     </form>
@@ -102,13 +102,13 @@
 </div>
 <script>
 (function(){
-  var KEY='dc-gate-ok', PW='password';
+  var KEY='dc-gate-ok', PW='password', de=document.documentElement;
   var g=document.getElementById('dc-gate'); if(!g) return;
   try{ if(sessionStorage.getItem(KEY)==='1'){ g.parentNode.removeChild(g); return; } }catch(e){}
-  document.documentElement.style.overflow='hidden';
+  de.style.scrollbarGutter='stable'; de.style.overflow='hidden';
   var f=document.getElementById('dc-gate-form'), inp=document.getElementById('dc-gate-input'), err=document.getElementById('dc-gate-err');
   f.addEventListener('submit', function(e){ e.preventDefault();
-    if(inp.value===PW){ try{ sessionStorage.setItem(KEY,'1'); }catch(_){} document.documentElement.style.overflow=''; if(g.parentNode) g.parentNode.removeChild(g); }
+    if(inp.value===PW){ try{ sessionStorage.setItem(KEY,'1'); }catch(_){} de.style.overflow=''; de.style.scrollbarGutter=''; if(g.parentNode) g.parentNode.removeChild(g); }
     else { err.style.visibility='visible'; inp.value=''; inp.focus(); }
   });
   try{ inp.focus(); }catch(e){}
