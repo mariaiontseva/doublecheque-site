@@ -833,7 +833,12 @@ class Component extends DCLogic {
     } catch (e) { return false; }
   }
 
+  _ga(name, params) {
+    try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) {}
+  }
+
   openModal(which) {
+    this._ga('form_open', { form: which });
     if (which === 'investor') this.setState({ investorModal: true, investorSent: false, menuOpen: false });
     else if (which === 'docs') this.setState({ docsModal: true, docsSent: false, menuOpen: false });
     else this.setState({ founderModal: true, founderSent: false, menuOpen: false });
@@ -981,8 +986,8 @@ class Component extends DCLogic {
       investorSent: this.state.investorSent,
       founderOpen: !this.state.founderSent,
       founderSent: this.state.founderSent,
-      submitInvestor: async (e) => { e.preventDefault(); const d = this._collect(e.target, 'investor'); if (d._gotcha) { this.setState({ investorSent: true }); return; } this.setState({ investorError: false }); const ok = await this._post(d); this.setState(ok ? { investorSent: true } : { investorError: true }); },
-      submitFounder: async (e) => { e.preventDefault(); const d = this._collect(e.target, 'founder'); if (d._gotcha) { this.setState({ founderSent: true }); return; } this.setState({ founderError: false }); const ok = await this._post(d); this.setState(ok ? { founderSent: true } : { founderError: true }); },
+      submitInvestor: async (e) => { e.preventDefault(); const d = this._collect(e.target, 'investor'); if (d._gotcha) { this.setState({ investorSent: true }); return; } this.setState({ investorError: false }); const ok = await this._post(d); if (ok) this._ga('generate_lead', { form: 'investor' }); this.setState(ok ? { investorSent: true } : { investorError: true }); },
+      submitFounder: async (e) => { e.preventDefault(); const d = this._collect(e.target, 'founder'); if (d._gotcha) { this.setState({ founderSent: true }); return; } this.setState({ founderError: false }); const ok = await this._post(d); if (ok) this._ga('generate_lead', { form: 'founder' }); this.setState(ok ? { founderSent: true } : { founderError: true }); },
       investorError: this.state.investorError,
       founderError: this.state.founderError,
       investorModal: this.state.investorModal,
@@ -995,7 +1000,7 @@ class Component extends DCLogic {
       docsSent: this.state.docsSent,
       docsError: this.state.docsError,
       docsModal: this.state.docsModal,
-      submitDocs: async (e) => { e.preventDefault(); const d = this._collect(e.target, 'docs'); if (d._gotcha) { this.setState({ docsSent: true }); return; } this.setState({ docsError: false }); const ok = await this._post(d); this.setState(ok ? { docsSent: true } : { docsError: true }); },
+      submitDocs: async (e) => { e.preventDefault(); const d = this._collect(e.target, 'docs'); if (d._gotcha) { this.setState({ docsSent: true }); return; } this.setState({ docsError: false }); const ok = await this._post(d); if (ok) this._ga('generate_lead', { form: 'docs' }); this.setState(ok ? { docsSent: true } : { docsError: true }); },
       openInvestor: (e) => { if (e) e.preventDefault(); this.openModal('investor'); },
       openDocs: (e) => { if (e) e.preventDefault(); this.openModal('docs'); },
       openFounder: (e) => { if (e) e.preventDefault(); this.openModal('founder'); },
