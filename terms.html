@@ -188,5 +188,34 @@
     }
   })();
 </script>
+<!-- ===== COOKIE CONSENT ===== -->
+<div id="dc-cookie" role="region" aria-label="Cookie consent" style="display:none; position:fixed; left:0; right:0; bottom:0; z-index:70; background:#F7F6F2; border-top:1px solid #0A0A0A;">
+  <div style="max-width:1080px; margin:0 auto; padding:16px 32px; display:flex; align-items:center; gap:16px 28px; flex-wrap:wrap;">
+    <p style="margin:0; flex:1 1 320px; min-width:240px; font-family:'Inter',sans-serif; font-size:13.5px; line-height:1.55; color:#6B6B66;">We use essential cookies to make this site work. With your consent we'd also set analytics cookies to understand how it is used. <a href="cookies.html" style="color:#0A0A0A; text-decoration:underline;">Cookie policy</a>.</p>
+    <div style="display:flex; gap:10px; flex:none;">
+      <button type="button" id="dc-cookie-reject" style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; padding:11px 20px; background:#FFFFFF; color:#0A0A0A; border:1px solid #0A0A0A; cursor:pointer;">Reject non-essential</button>
+      <button type="button" id="dc-cookie-accept" style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; padding:11px 20px; background:#0A0A0A; color:#F7F6F2; border:1px solid #0A0A0A; cursor:pointer;">Accept all</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='dc-cookie-consent', GA='G-B4GB3H0E1M', loaded=false;
+  function loadGA(){ if(loaded)return; loaded=true;
+    var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+GA; document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[]; window.gtag=function(){window.dataLayer.push(arguments);};
+    gtag('js', new Date()); gtag('config', GA);
+  }
+  var el=document.getElementById('dc-cookie');
+  var prior=null; try{ prior=localStorage.getItem(KEY); }catch(e){}
+  if(prior==='all') loadGA();
+  if(prior){ return; }
+  if(!el) return;
+  function decide(v){ try{ localStorage.setItem(KEY,v); }catch(e){} el.style.display='none'; if(v==='all') loadGA(); }
+  document.getElementById('dc-cookie-accept').addEventListener('click',function(){ decide('all'); });
+  document.getElementById('dc-cookie-reject').addEventListener('click',function(){ decide('essential'); });
+  setTimeout(function(){ el.style.display='block'; }, 350);
+})();
+</script>
 </body>
 </html>
