@@ -13,7 +13,6 @@ The image assets are available at:
 - `https://doublecheque.com/email-signature/assets/farid-signature-photo.jpg`
 - `https://doublecheque.com/email-signature/assets/dc-mark-dark.png`
 - `https://doublecheque.com/email-signature/assets/sig-linkedin.png`
-- `https://doublecheque.com/email-signature/assets/sig-instagram.png`
 
 ## Gmail Setup
 
